@@ -24,7 +24,7 @@ namespace Editor {
 
     [MenuItem("Kino/Open Build folder")]
     private static void OpenBuildFolder() {
-      string buildPath = Path.Combine(Application.dataPath, PacksBuilder.BUILD_DIR);
+      string buildPath = Path.Combine(Application.dataPath, "..", PacksBuilder.BUILD_DIR);
       if (Directory.Exists(buildPath)) {
         Process.Start(buildPath);
       }
@@ -106,6 +106,10 @@ namespace Editor {
 
       if (GUILayout.Button($"Build for '{EditorUserBuildSettings.activeBuildTarget}'")) {
         builder_.Build(EditorUserBuildSettings.activeBuildTarget, authorMeta_, packs_);
+      }
+
+      if (GUILayout.Button($"Open Build folder")) {
+        OpenBuildFolder();
       }
     }
 
