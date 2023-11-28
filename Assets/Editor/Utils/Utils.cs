@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
+using UnityEditor;
+using Debug = UnityEngine.Debug;
+using Object = UnityEngine.Object;
 
 namespace Editor {
   public static class Utils {
@@ -32,6 +36,21 @@ namespace Editor {
 
         ulong uniqueID = ((timestamp & 0x1FFFFFFFFFF) << 22) | (counter_ & 0x3FFFFF);
         return uniqueID;
+      }
+    }
+
+    public static void SelectObject(Object obj) {
+      Selection.activeObject = obj;
+      EditorApplication.ExecuteMenuItem("Window/General/Inspector");
+      EditorGUIUtility.PingObject(obj);
+    }
+
+    public static void TryOpenLink(string url) {
+      try {
+        Process.Start(url);
+      }
+      catch {
+        Debug.LogError($"Kino: Unable to open URL {url}");
       }
     }
   }
