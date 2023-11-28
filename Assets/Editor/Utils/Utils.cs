@@ -40,6 +40,10 @@ namespace Editor {
     }
 
     public static void SelectObject(Object obj) {
+      if (!obj) {
+        return;
+      }
+
       Selection.activeObject = obj;
       EditorApplication.ExecuteMenuItem("Window/General/Inspector");
       EditorGUIUtility.PingObject(obj);

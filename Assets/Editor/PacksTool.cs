@@ -38,8 +38,13 @@ namespace Editor {
     }
 
     private void OnGUI() {
-      if (!EnsureMetaLoaded()) {
-        GUILayout.Label("Unable to load meta, see console for errors", EditorStyles.boldLabel);
+      if (!authorMeta_) {
+        GUILayout.Label("Unable to load meta", EditorStyles.boldLabel);
+
+        if (GUILayout.Button("Create author's meta")) {
+          CreateAuthorMeta();
+        }
+
         return;
       }
 
@@ -108,7 +113,7 @@ namespace Editor {
         builder_.Build(EditorUserBuildSettings.activeBuildTarget, authorMeta_, packs_);
       }
 
-      if (GUILayout.Button($"Open Build folder")) {
+      if (GUILayout.Button("Open Build folder")) {
         OpenBuildFolder();
       }
     }
@@ -126,10 +131,18 @@ namespace Editor {
       GUILayout.Space(OFFSET);
     }
 
-    private bool EnsureMetaLoaded() {
+    private void CreateAuthorMeta() {
+      if (authorMeta_) {
+        return;
+      }
+
+      var meta = CreateInstance<AuthorMeta>();
+      AssetDatabase.CreateAsset(meta, $"Assets/{AuthorMeta.ASSET_NAME}");
+      AssetDatabase.SaveAssets();
+
       Refresh();
 
-      return authorMeta_;
+      Utils.SelectObject(authorMeta_);
     }
 
     private void Refresh() {

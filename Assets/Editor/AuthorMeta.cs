@@ -2,8 +2,8 @@
 using UnityEngine;
 
 namespace Editor {
-  [CreateAssetMenu(fileName = "__author_meta", menuName = "Kino (Dev)/Create author meta", order = 9999)]
   public class AuthorMeta : ScriptableObject {
+    public const string ASSET_NAME = "__author_meta.asset"; 
     private const int SID_SIZE = 17;
 
     [Tooltip("Author's name")]
