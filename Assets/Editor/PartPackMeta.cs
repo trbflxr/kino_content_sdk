@@ -6,7 +6,15 @@ using UnityEditor;
 using UnityEngine;
 
 namespace Editor {
+  public enum PackType {
+    Undefined = 0,
+    Wheels = 1,
+    CarParts = 2,
+    SpecificCarParts = 3
+  }
+
   public enum PartType {
+    Undefined = 0,
     Wheels = 1,
     // SteeringWheel = 2,
     // Spoiler = 3
@@ -27,7 +35,7 @@ namespace Editor {
     public string name = "unknown";
 
     [Tooltip("Type of the part, have to match with the pack type")]
-    public PartType Type;
+    public PartType Type = PartType.Undefined;
 
     [Tooltip("Part prefab, can't be null")]
     public GameObject Prefab;
@@ -64,6 +72,7 @@ namespace Editor {
     public class Proxy {
       public ulong Id;
       public int Type;
+      public int TargetCarId;
       public string AuthorName;
       public string Name;
       public string CategoryName;
@@ -83,7 +92,11 @@ namespace Editor {
     public ulong Id = Utils.GenerateUniqueId();
 
     [Tooltip("Pack parts type")]
-    public PartType Type = PartType.Wheels;
+    public PackType Type = PackType.Undefined;
+
+    [HideInInspector]
+    [Tooltip("Specify the car the part is intended for")]
+    public int TargetCarId = -1;
 
     [Tooltip("Pack name. Have to be lowercase with only Latin letters and digits, without any spaces")]
     public string PackName = "parts_pack";
@@ -109,6 +122,7 @@ namespace Editor {
       var meta = new Proxy {
         Id = Id,
         Type = (int)Type,
+        TargetCarId = TargetCarId,
         Name = PackName,
         CategoryName = CategoryName,
         Version = Version,
@@ -126,7 +140,7 @@ namespace Editor {
       }
 
       foreach (var part in Parts) {
-        if (part.Type != Type) {
+        if (Type == PackType.Wheels && part.Type != PartType.Wheels) {
           Debug.LogError($"Kino: Unable to add part {part.name} ({part.Type}), because pack type is different: {Type}");
           continue;
         }
@@ -194,8 +208,19 @@ namespace Editor {
     }
 
     private void OnValidate() {
+      valid_ = false;
+      
+      if (Type == PackType.Undefined) {
+        Debug.LogWarning($"Kino: Invalid pack type selected: {Type}");
+        return;
+      }
+
+      if (Type == PackType.SpecificCarParts && TargetCarId <= 0) {
+        Debug.LogWarning($"Kino: Invalid target car ID selected: {TargetCarId}");
+        return;
+      }
+
       if (Parts == null) {
-        valid_ = false;
         return;
       }
 
@@ -215,7 +240,13 @@ namespace Editor {
           }
         }
 
-        if (part.Type != Type) {
+        if (part.Type == PartType.Undefined) {
+          Debug.LogWarning($"Kino: Part {part.name} has {part.Type} type selected");
+          valid_ = false;
+        }
+
+        if ((Type == PackType.Wheels && part.Type != PartType.Wheels)
+            || (part.Type == PartType.Wheels && Type != PackType.Wheels)) {
           Debug.LogWarning($"Kino: Part {part.name} ({part.Type}) is incompatible with pack {PackName} ({Type}), because of type difference");
           valid_ = false;
         }
@@ -231,12 +262,40 @@ namespace Editor {
   [CustomEditor(typeof(PartPackMeta))]
   public class PartPackMetaEditor : UnityEditor.Editor {
     public override void OnInspectorGUI() {
-      base.OnInspectorGUI();
       var script = (PartPackMeta)target;
+
+      DrawProp("Id");
+      DrawProp("Type");
+
+      if (script.Type == PackType.SpecificCarParts) {
+        DrawProp("TargetCarId", "Target car ID");
+      }
+
+      DrawProp("PackName");
+      DrawProp("CategoryName");
+      DrawProp("Description");
+      DrawProp("PackIcon");
+      DrawProp("Version");
+      DrawProp("Parts");
 
       if (GUILayout.Button("Validate all parts")) {
         script.ForceValidate();
       }
+
+      serializedObject.ApplyModifiedProperties();
+    }
+
+    private void DrawProp(string propName, string propText = null) {
+      var prop = serializedObject.FindProperty(propName);
+      if (prop == null) {
+        return;
+      }
+
+      if (string.IsNullOrWhiteSpace(propText)) {
+        propText = propName;
+      }
+
+      EditorGUILayout.PropertyField(prop, new GUIContent(propText, prop.tooltip));
     }
   }
 }
