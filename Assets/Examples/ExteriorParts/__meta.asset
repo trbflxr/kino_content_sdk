@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e40cfe666e84771b7a249caa74eb593, type: 3}
+  m_Name: __meta
+  m_EditorClassIdentifier: 
+  SelectedToBuild: 1
+  Id: 7824069759061721088
+  Type: 3
+  TargetCarId: 63
+  PackName: exterior_example
+  CategoryName: example
+  Description: example exterior parts
+  PackIcon: {fileID: 2800000, guid: 36697cba451668b4fae06ee18188d5d0, type: 3}
+  Version: 100
+  Parts:
+  - name: bumper_front
+    Type: 8
+    Prefab: {fileID: 6896611538770031491, guid: 4903272af57b0cc4290f6088363edb47, type: 3}
+    Icon: {fileID: 2800000, guid: c30d00a81d6542c40ae1837621e3969e, type: 3}
+    FilePath: Assets/Examples/ExteriorParts/bumper_front.prefab
+    ReplacementId: 63027
+    Id: 29185350
+    SteeringWheelSize: 0
+  - name: bumper_rear
+    Type: 9
+    Prefab: {fileID: 6896611538770031491, guid: 4bfda84fcc0cbee459c5990588e42fe5, type: 3}
+    Icon: {fileID: 2800000, guid: bb2cc982d8ff1aa4a9ce5ee5fdb29023, type: 3}
+    FilePath: Assets/Examples/ExteriorParts/bumper_rear.prefab
+    ReplacementId: 63030
+    Id: 29185712
+    SteeringWheelSize: 0
+  - name: side_skirts
+    Type: 10
+    Prefab: {fileID: 8842311084097144222, guid: bc1e85fa2c9ed8b4f81a6234040069b7, type: 3}
+    Icon: {fileID: 2800000, guid: eda062bf16e02ef44a7bf24336ddac6c, type: 3}
+    FilePath: Assets/Examples/ExteriorParts/side_skirts.prefab
+    ReplacementId: 63063
+    Id: 29188012
+    SteeringWheelSize: 0
+  - name: doors
+    Type: 11
+    Prefab: {fileID: 4322040766641817395, guid: 50be4400319dc7342b00b4d8078420e4, type: 3}
+    Icon: {fileID: 2800000, guid: 0b39f97ea330aac459e3fbb440f4b0d0, type: 3}
+    FilePath: Assets/Examples/ExteriorParts/doors.prefab
+    ReplacementId: 63037
+    Id: 29190242
+    SteeringWheelSize: 0
+  - name: side_mirrors
+    Type: 12
+    Prefab: {fileID: 3103356679313826730, guid: 4de7aaf41d9a43e49831a5fd0d4bf2da, type: 3}
+    Icon: {fileID: 2800000, guid: 2384eb5de05269b44a58f8dd1d83d725, type: 3}
+    FilePath: Assets/Examples/ExteriorParts/side_mirrors.prefab
+    ReplacementId: 63120
+    Id: 29188186
+    SteeringWheelSize: 0
+  - name: bonnet
+    Type: 13
+    Prefab: {fileID: 2998365601440361955, guid: f8a2c9c6c969e08478bc24c25b416e55, type: 3}
+    Icon: {fileID: 2800000, guid: 36697cba451668b4fae06ee18188d5d0, type: 3}
+    FilePath: Assets/Examples/ExteriorParts/bonnet.prefab
+    ReplacementId: 63111
+    Id: 29188501
+    SteeringWheelSize: 0
+  - name: trunk
+    Type: 14
+    Prefab: {fileID: 759136051997413343, guid: de40674efe1eafc4299002058a4bb215, type: 3}
+    Icon: {fileID: 0}
+    FilePath: Assets/Examples/ExteriorParts/trunk.prefab
+    ReplacementId: 63052
+    Id: 29188720
+    SteeringWheelSize: 0
+  - name: spoiler
+    Type: 15
+    Prefab: {fileID: 6149268208293790798, guid: 32c3a16f8a34d21498fcacc6ad491e82, type: 3}
+    Icon: {fileID: 2800000, guid: 220a3d9debf594541bbbbc3b9d3770b2, type: 3}
+    FilePath: Assets/Examples/ExteriorParts/spoiler.prefab
+    ReplacementId: 63050
+    Id: 29183577
+    SteeringWheelSize: 0
+  - name: roof
+    Type: 16
+    Prefab: {fileID: 450599057309713642, guid: 78c91b4971494f541a23818042e4370f, type: 3}
+    Icon: {fileID: 2800000, guid: a14e6ee680df42f4c99bf69bc3d6b9ca, type: 3}
+    FilePath: Assets/Examples/ExteriorParts/roof.prefab
+    ReplacementId: 63078
+    Id: 29188944
+    SteeringWheelSize: 0
+  - name: exhaust
+    Type: 17
+    Prefab: {fileID: 7575381526045103269, guid: 89164847caffa704ca933633b5a6ea16, type: 3}
+    Icon: {fileID: 2800000, guid: 2e8113252e9a1b245a81dc384ae86446, type: 3}
+    FilePath: Assets/Examples/ExteriorParts/exhaust.prefab
+    ReplacementId: 63038
+    Id: 29189123
+    SteeringWheelSize: 0
+  - name: cage
+    Type: 18
+    Prefab: {fileID: 3211840301065738995, guid: f9a5b7e0d2e16954bbc529837ef2f35f, type: 3}
+    Icon: {fileID: 2800000, guid: 3e471b9fad7264146aa03aca58b27957, type: 3}
+    FilePath: Assets/Examples/ExteriorParts/cage.prefab
+    ReplacementId: 63054
+    Id: 29189681
+    SteeringWheelSize: 0
+  - name: bonnet_uv_test
+    Type: 13
+    Prefab: {fileID: 4647920301854032328, guid: a9cc4f3be2287fb40a06320b04a6ee6c, type: 3}
+    Icon: {fileID: 2800000, guid: daa49a1f06460a04b9827dd6f0bace08, type: 3}
+    FilePath: Assets/Examples/ExteriorParts/bonnet_uv_test.prefab
+    ReplacementId: 63022
+    Id: 29193535
+    SteeringWheelSize: 0
