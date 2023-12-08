@@ -10,7 +10,8 @@ namespace Editor {
   public class PacksTool : EditorWindow {
     private const float OFFSET = 5.0f;
 
-    private AuthorMeta authorMeta_;
+    private static AuthorMeta authorMeta_;
+    private static BuilderMeta builderMeta_;
     private readonly List<PartPackMeta> packs_ = new List<PartPackMeta>();
 
     private readonly PacksBuilder builder_ = new PacksBuilder();
@@ -24,9 +25,12 @@ namespace Editor {
 
     [MenuItem("Kino/Open Build folder")]
     private static void OpenBuildFolder() {
-      string buildPath = Path.Combine(Application.dataPath, "..", PacksBuilder.BUILD_DIR);
-      if (Directory.Exists(buildPath)) {
-        Process.Start(buildPath);
+      if (!builderMeta_) {
+        return;
+      }
+
+      if (Directory.Exists(builderMeta_.BuildFolder)) {
+        Process.Start(builderMeta_.BuildFolder);
       }
       else {
         Debug.LogError("Kino: Unable to open build packs folder, the folder doesn't exists");
@@ -38,17 +42,22 @@ namespace Editor {
     }
 
     private void OnGUI() {
-      if (!authorMeta_) {
+      if (!authorMeta_ || !builderMeta_) {
         GUILayout.Label("Unable to load meta", EditorStyles.boldLabel);
 
-        if (GUILayout.Button("Create author's meta")) {
-          CreateAuthorMeta();
+        if (!authorMeta_ && GUILayout.Button("Create author meta")) {
+          CreateAsset(ref authorMeta_, AuthorMeta.ASSET_NAME);
+        }
+
+        if (!builderMeta_ && GUILayout.Button("Create builder meta")) {
+          CreateAsset(ref builderMeta_, BuilderMeta.ASSET_NAME);
         }
 
         return;
       }
 
       DrawAuthorMeta();
+      DrawBuilderMeta();
 
       DrawPacks();
 
@@ -74,6 +83,26 @@ namespace Editor {
       GUI.enabled = true;
       if (GUILayout.Button("Edit")) {
         Utils.SelectObject(authorMeta_);
+      }
+
+      GUI.enabled = guiEnabled;
+
+      DrawHorizontalGUILine();
+    }
+
+    private void DrawBuilderMeta() {
+      bool guiEnabled = GUI.enabled;
+
+      GUI.enabled = false;
+
+      GUILayout.Label("Build folder:", EditorStyles.boldLabel);
+      EditorGUILayout.TextField(builderMeta_.BuildFolder);
+
+      GUILayout.Space(OFFSET);
+
+      GUI.enabled = true;
+      if (GUILayout.Button("Edit")) {
+        Utils.SelectObject(builderMeta_);
       }
 
       GUI.enabled = guiEnabled;
@@ -110,7 +139,7 @@ namespace Editor {
       DrawHorizontalGUILine();
 
       if (GUILayout.Button($"Build for '{EditorUserBuildSettings.activeBuildTarget}'")) {
-        builder_.Build(EditorUserBuildSettings.activeBuildTarget, authorMeta_, packs_);
+        builder_.Build(EditorUserBuildSettings.activeBuildTarget, builderMeta_, authorMeta_, packs_);
       }
 
       if (GUILayout.Button("Open Build folder")) {
@@ -131,22 +160,30 @@ namespace Editor {
       GUILayout.Space(OFFSET);
     }
 
-    private void CreateAuthorMeta() {
-      if (authorMeta_) {
+    private void CreateAsset<T>(ref T metaObject, string assetName) where T : BaseBuilderMeta {
+      if (metaObject) {
         return;
       }
 
-      var meta = CreateInstance<AuthorMeta>();
-      AssetDatabase.CreateAsset(meta, $"Assets/{AuthorMeta.ASSET_NAME}");
+      metaObject = CreateInstance<T>();
+      if (!metaObject) {
+        Debug.LogError($"kino: Unable to create asset '{typeof(T)}'");
+        return;
+      }
+
+      AssetDatabase.CreateAsset(metaObject, $"Assets/{assetName}");
+      metaObject.Validate();
+
       AssetDatabase.SaveAssets();
 
       Refresh();
 
-      Utils.SelectObject(authorMeta_);
+      Utils.SelectObject(metaObject);
     }
 
     private void Refresh() {
       authorMeta_ = AuthorMeta.GetInstance();
+      builderMeta_ = BuilderMeta.GetInstance();
 
       packs_.Clear();
       packs_.AddRange(PartPackMeta.GetAllInstances());

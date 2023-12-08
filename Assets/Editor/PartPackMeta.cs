@@ -8,16 +8,33 @@ using UnityEngine;
 namespace Editor {
   public enum PackType {
     Undefined = 0,
-    Wheels = 1,
-    CarParts = 2,
-    SpecificCarParts = 3
+    Wheels,
+    InteriorParts,
+    CarParts
   }
 
   public enum PartType {
     Undefined = 0,
-    Wheels = 1,
-    // SteeringWheel = 2,
-    // Spoiler = 3
+    Wheel,
+    SteeringWheel,
+    Handbrake,
+    ShifterSequential,
+    ShifterHPattern,
+    SeatLeft,
+    SeatRight,
+    BumperFront,
+    BumperRear,
+    Skirts,
+    Doors,
+    Mirrors,
+    Bonnet,
+    Trunk,
+    Spoiler,
+    Roof,
+    Exhaust,
+    Cage,
+    // LightsFront,
+    // LightsRear
   }
 
   [Serializable]
@@ -29,6 +46,8 @@ namespace Editor {
       public int ReplacementId;
       public string FilePath;
       public string IconPath;
+
+      public float SteeringWheelSize;
     }
 
     [HideInInspector]
@@ -52,6 +71,10 @@ namespace Editor {
     [ReadOnly]
     [Tooltip("Part 'unique' ID")]
     public int Id;
+
+    [Tooltip("Steering wheel size. Needed for correct driver animation")]
+    [RangeVisibleFor(0.05f, 0.4f, PartType.SteeringWheel)]
+    public float SteeringWheelSize = 0.3f;
 
     public void Validate(bool forceRegenerateId) {
       if (Prefab) {
@@ -102,7 +125,7 @@ namespace Editor {
     public string PackName = "parts_pack";
 
     [Tooltip("[Optional] Category name. Will be displayed on the pack card in the game")]
-    public string CategoryName = string.Empty;
+    public string CategoryName = "kino";
 
     [TextArea(4, 20)]
     [Tooltip("Pack description")]
@@ -140,7 +163,7 @@ namespace Editor {
       }
 
       foreach (var part in Parts) {
-        if (Type == PackType.Wheels && part.Type != PartType.Wheels) {
+        if (Type == PackType.Wheels && part.Type != PartType.Wheel) {
           Debug.LogError($"Kino: Unable to add part {part.name} ({part.Type}), because pack type is different: {Type}");
           continue;
         }
@@ -150,7 +173,8 @@ namespace Editor {
           FilePath = part.FilePath,
           IconPath = string.Empty,
           Id = part.Id,
-          ReplacementId = part.ReplacementId
+          ReplacementId = part.ReplacementId,
+          SteeringWheelSize = part.SteeringWheelSize
         };
 
         if (string.IsNullOrWhiteSpace(partMeta.FilePath)) {
@@ -209,13 +233,13 @@ namespace Editor {
 
     private void OnValidate() {
       valid_ = false;
-      
+
       if (Type == PackType.Undefined) {
         Debug.LogWarning($"Kino: Invalid pack type selected: {Type}");
         return;
       }
 
-      if (Type == PackType.SpecificCarParts && TargetCarId <= 0) {
+      if (Type == PackType.CarParts && TargetCarId <= 0) {
         Debug.LogWarning($"Kino: Invalid target car ID selected: {TargetCarId}");
         return;
       }
@@ -245,8 +269,13 @@ namespace Editor {
           valid_ = false;
         }
 
-        if ((Type == PackType.Wheels && part.Type != PartType.Wheels)
-            || (part.Type == PartType.Wheels && Type != PackType.Wheels)) {
+        bool isWheel = part.Type == PartType.Wheel;
+        bool isInterior = IsInteriorPart(part.Type);
+        bool isExterior = IsExteriorPart(part.Type);
+
+        if ((Type == PackType.Wheels && !isWheel)
+            || (Type == PackType.InteriorParts && !isInterior)
+            || (Type == PackType.CarParts && !isExterior)) {
           Debug.LogWarning($"Kino: Part {part.name} ({part.Type}) is incompatible with pack {PackName} ({Type}), because of type difference");
           valid_ = false;
         }
@@ -256,6 +285,24 @@ namespace Editor {
           valid_ = false;
         }
       }
+    }
+
+    private bool IsExteriorPart(PartType type) {
+      return type != PartType.Wheel && !IsInteriorPart(type);
+    }
+
+    private bool IsInteriorPart(PartType type) {
+      switch (type) {
+        case PartType.SteeringWheel:
+        case PartType.Handbrake:
+        case PartType.ShifterSequential:
+        case PartType.ShifterHPattern:
+        case PartType.SeatLeft:
+        case PartType.SeatRight:
+          return true;
+      }
+
+      return false;
     }
   }
 
@@ -267,7 +314,7 @@ namespace Editor {
       DrawProp("Id");
       DrawProp("Type");
 
-      if (script.Type == PackType.SpecificCarParts) {
+      if (script.Type == PackType.CarParts) {
         DrawProp("TargetCarId", "Target car ID");
       }
 

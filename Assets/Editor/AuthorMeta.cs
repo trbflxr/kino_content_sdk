@@ -2,8 +2,8 @@
 using UnityEngine;
 
 namespace Editor {
-  public class AuthorMeta : ScriptableObject {
-    public const string ASSET_NAME = "__author_meta.asset"; 
+  public class AuthorMeta : BaseBuilderMeta {
+    public const string ASSET_NAME = "__author_meta.asset";
     private const int SID_SIZE = 17;
 
     [Tooltip("Author's name")]
@@ -15,7 +15,7 @@ namespace Editor {
     [Tooltip("Author's DiscordID, look for a button if you don't know how to get it")]
     public ulong DiscordId;
 
-    public bool Validate() {
+    public override bool Validate() {
       if (string.IsNullOrWhiteSpace(Name)) {
         Debug.LogError("Kino: Author's name can be empty");
         return false;
