@@ -6,7 +6,7 @@ namespace Editor {
   public class BuilderMeta : BaseBuilderMeta {
     public const string ASSET_NAME = "__builder_meta.asset";
 
-    public const int TOOL_VERSION = 100;
+    public const int TOOL_VERSION = 300;
     public const string PACK_EXT = ".knpp";
     private const string BUILD_DIR = "Build";
 
