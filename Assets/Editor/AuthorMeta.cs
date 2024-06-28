@@ -2,9 +2,11 @@
 using UnityEngine;
 
 namespace Editor {
-	public class AuthorMeta : BaseBuilderMeta {
-		public const string ASSET_NAME = "__author_meta.asset";
+	public class AuthorMeta : BaseMeta<AuthorMeta> {
 		private const int SID_SIZE = 17;
+
+		public override string AssetName => "__author_meta.asset";
+		public override string BaseFolder => "Content";
 
 		[Tooltip("Author's name")]
 		public string Name;
@@ -32,22 +34,6 @@ namespace Editor {
 			}
 
 			return true;
-		}
-
-		public static AuthorMeta GetInstance() {
-			var guids = AssetDatabase.FindAssets($"t:{nameof(AuthorMeta)}");
-			if (guids == null || guids.Length == 0) {
-				Debug.LogError("Kino: Unable to locate AuthorMeta asset");
-				return null;
-			}
-
-			if (guids.Length > 1) {
-				Debug.LogError("Kino: Multiple AuthorMeta assets defined. Only one AuthorMeta should be defined in the project");
-				return null;
-			}
-
-			string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-			return AssetDatabase.LoadAssetAtPath<AuthorMeta>(path);
 		}
 	}
 

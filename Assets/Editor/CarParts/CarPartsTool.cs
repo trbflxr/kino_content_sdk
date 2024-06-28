@@ -46,11 +46,11 @@ namespace Editor {
 				GUILayout.Label("Unable to load meta", EditorStyles.boldLabel);
 
 				if (!authorMeta_ && GUILayout.Button("Create author meta")) {
-					CreateAsset(ref authorMeta_, AuthorMeta.ASSET_NAME);
+					CreateAsset(ref authorMeta_);
 				}
 
 				if (!builderMeta_ && GUILayout.Button("Create builder meta")) {
-					CreateAsset(ref builderMeta_, CarPartsBuilderMeta.ASSET_NAME);
+					CreateAsset(ref builderMeta_);
 				}
 
 				return;
@@ -160,7 +160,7 @@ namespace Editor {
 			GUILayout.Space(OFFSET);
 		}
 
-		private void CreateAsset<T>(ref T metaObject, string assetName) where T : BaseBuilderMeta {
+		private void CreateAsset<T>(ref T metaObject) where T : BaseMeta<T> {
 			if (metaObject) {
 				return;
 			}
@@ -171,7 +171,12 @@ namespace Editor {
 				return;
 			}
 
-			AssetDatabase.CreateAsset(metaObject, $"Assets/{assetName}");
+			string baseFolder = Path.Combine("Assets", metaObject.BaseFolder);
+			if (!Directory.Exists(baseFolder)) {
+				Directory.CreateDirectory(baseFolder);
+			}
+
+			AssetDatabase.CreateAsset(metaObject, Path.Combine(baseFolder, metaObject.AssetName));
 			metaObject.Validate();
 
 			AssetDatabase.SaveAssets();
