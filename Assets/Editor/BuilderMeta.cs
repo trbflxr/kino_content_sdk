@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Editor {
   public class BuilderMeta : BaseBuilderMeta {
-    public const string ASSET_NAME = "__builder_meta.asset";
+    public const string ASSET_NAME = "__parts_builder_meta.asset";
 
     public const int TOOL_VERSION = 300;
     public const string PACK_EXT = ".knpp";
@@ -12,9 +12,6 @@ namespace Editor {
 
     [Tooltip("Specify the folder in which you want to put the compiled packs")]
     public string BuildFolder = string.Empty;
-
-    [ReadOnly]
-    public int Version = TOOL_VERSION;
 
     public override bool Validate() {
       OnValidate();
