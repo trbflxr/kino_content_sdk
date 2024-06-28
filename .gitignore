@@ -4,6 +4,9 @@
 *.csproj.user
 *.csproj.DotSettings
 
+# builder
+__pack_meta.txt
+__pack_meta.txt.meta
 
 # sdk
 *.sln
