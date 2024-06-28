@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: __meta
   m_EditorClassIdentifier: 
   SelectedToBuild: 1
+  Name: example_interior
   Id: 7776908407830740992
   Type: 2
   TargetCarId: -1
-  PackName: interior_example
   CategoryName: example
   Description: example interior parts
   PackIcon: {fileID: 2800000, guid: 9b17453a7f95b6c4ca9fbe2e5883e56e, type: 3}
@@ -26,7 +26,7 @@ MonoBehaviour:
     Type: 3
     Prefab: {fileID: 264086344316716678, guid: 25d75958116d33441ac84bc92b687504, type: 3}
     Icon: {fileID: 2800000, guid: 79aba0b290c471c4ba3d3f818d4e9b15, type: 3}
-    FilePath: Assets/Examples/InteriorParts/hand_brake.prefab
+    FilePath: Assets/Content/CarParts/Examples/InteriorParts/hand_brake.prefab
     ReplacementId: 63101
     Id: 29172287
     SteeringWheelSize: 0
@@ -34,7 +34,7 @@ MonoBehaviour:
     Type: 5
     Prefab: {fileID: 5554866183207716291, guid: b00119cb2aa10af4c9a8b20a1086ef0f, type: 3}
     Icon: {fileID: 2800000, guid: 52b3ad4181ffbec4cad6eb26d07127f6, type: 3}
-    FilePath: Assets/Examples/InteriorParts/shifter_h.prefab
+    FilePath: Assets/Content/CarParts/Examples/InteriorParts/shifter_h.prefab
     ReplacementId: 63118
     Id: 29172346
     SteeringWheelSize: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
     Type: 4
     Prefab: {fileID: 705466059422068779, guid: c91160f7cd9411c45aba77b5cfa779f1, type: 3}
     Icon: {fileID: 2800000, guid: 42382485181c7b4429560828f54a2bae, type: 3}
-    FilePath: Assets/Examples/InteriorParts/shifter_seq.prefab
+    FilePath: Assets/Content/CarParts/Examples/InteriorParts/shifter_seq.prefab
     ReplacementId: 63109
     Id: 29172390
     SteeringWheelSize: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
     Type: 2
     Prefab: {fileID: 3444742945689581126, guid: 384b6b98a05be184f9dd11ea853f0574, type: 3}
     Icon: {fileID: 2800000, guid: 8063050a249eef441beb8cbbd04c086c, type: 3}
-    FilePath: Assets/Examples/InteriorParts/st_wheel.prefab
+    FilePath: Assets/Content/CarParts/Examples/InteriorParts/st_wheel.prefab
     ReplacementId: 63135
     Id: 29173231
     SteeringWheelSize: 0.19
@@ -58,7 +58,7 @@ MonoBehaviour:
     Type: 6
     Prefab: {fileID: 1707769828346553700, guid: 7600af865f339424db7d5d45918f41ea, type: 3}
     Icon: {fileID: 2800000, guid: a01d783415aa03a449e3408eb92d8505, type: 3}
-    FilePath: Assets/Examples/InteriorParts/seat.prefab
+    FilePath: Assets/Content/CarParts/Examples/InteriorParts/seat.prefab
     ReplacementId: 63087
     Id: 29178730
     SteeringWheelSize: 0.19
@@ -66,7 +66,7 @@ MonoBehaviour:
     Type: 7
     Prefab: {fileID: 1707769828346553700, guid: 7600af865f339424db7d5d45918f41ea, type: 3}
     Icon: {fileID: 2800000, guid: 04c70b69874deb746a4c63f1a29f7715, type: 3}
-    FilePath: Assets/Examples/InteriorParts/seat.prefab
+    FilePath: Assets/Content/CarParts/Examples/InteriorParts/seat.prefab
     ReplacementId: 63092
     Id: 29181001
     SteeringWheelSize: 0.19
