@@ -133,6 +133,19 @@ namespace Editor {
 		protected virtual void DrawButtons() {
 			DrawHorizontalGUILine();
 
+			GUILayout.BeginHorizontal();
+
+			if (GUILayout.Button("Select all")) {
+				SelectAllToBuild(true);
+			}
+			if (GUILayout.Button("Unselect all")) {
+				SelectAllToBuild(false);
+			}
+
+			GUILayout.EndHorizontal();
+
+			DrawHorizontalGUILine();
+
 			if (GUILayout.Button($"Build for '{EditorUserBuildSettings.activeBuildTarget}'")) {
 				builder_.Build(EditorUserBuildSettings.activeBuildTarget, builderMeta_, authorMeta_, Entries);
 			}
@@ -203,6 +216,16 @@ namespace Editor {
 			Refresh();
 
 			Utils.SelectObject(metaObject);
+		}
+
+		private void SelectAllToBuild(bool selected) {
+			if (entries_ == null) {
+				return;
+			}
+
+			foreach (var entry in entries_) {
+				entry.SelectedToBuild = selected;
+			}
 		}
 	}
 }
