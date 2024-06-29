@@ -10,6 +10,7 @@ namespace Editor {
 	public class CarPartsTool : BaseEditorTool<CarPartsBuilderMeta, CarPartsMeta, CarPartsBuilder> { }
 	public class StickerPacksTool : BaseEditorTool<StickerPacksBuilderMeta, StickerPackMeta, StickerPacksBuilder> { }
 	public class CustomObjectsTool : BaseEditorTool<CustomObjectsBuilderMeta, CustomObjectsMeta, CustomObjectsBuilder> { }
+	public class MapsTool : BaseEditorTool<MapsBuilderMeta, MapMeta, MapsBuilder> { }
 
 	public abstract class BaseEditorTool<T, V, B> : EditorWindow where T : BaseBuilderMeta<T> where V : BaseEntryMeta<V> where B : BaseBuilder<T, V>, new() {
 		protected const float OFFSET = 5.0f;
@@ -111,14 +112,16 @@ namespace Editor {
 			EditorGUILayout.Space(OFFSET);
 
 			scrollPos_ = GUILayout.BeginScrollView(scrollPos_);
-			foreach (var pack in entries_) {
-				GUILayout.Label(pack.Name, EditorStyles.boldLabel);
+			foreach (var entry in entries_) {
+				GUILayout.Label(entry.Name, EditorStyles.boldLabel);
+
+				DrawAdditionalEntryInfo(entry);
 
 				GUILayout.BeginHorizontal();
 
-				pack.SelectedToBuild = EditorGUILayout.Toggle("Selected to build", pack.SelectedToBuild);
+				entry.SelectedToBuild = EditorGUILayout.Toggle("Selected to build", entry.SelectedToBuild);
 				if (GUILayout.Button("Edit")) {
-					Utils.SelectObject(pack);
+					Utils.SelectObject(entry);
 				}
 
 				GUILayout.EndHorizontal();
@@ -129,6 +132,8 @@ namespace Editor {
 
 			GUILayout.EndScrollView();
 		}
+
+		protected virtual void DrawAdditionalEntryInfo(V entry) { }
 
 		protected virtual void DrawButtons() {
 			DrawHorizontalGUILine();

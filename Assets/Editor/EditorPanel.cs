@@ -17,5 +17,10 @@ namespace Editor {
 		public static void OpenObjectsWindow() {
 			GetWindow(typeof(CustomObjectsTool));
 		}
+
+		[MenuItem("Kino/Maps tool", false, 3)]
+		public static void OpenMapsWindow() {
+			GetWindow(typeof(MapsTool));
+		}
 	}
 }
