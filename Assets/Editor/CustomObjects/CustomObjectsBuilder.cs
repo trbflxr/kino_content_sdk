@@ -51,7 +51,7 @@ namespace Editor {
 				}
 			};
 
-			BuildPipeline.BuildAssetBundles(builder.BuildFolder, builds, BuildAssetBundleOptions.ForceRebuildAssetBundle, target);
+			BuildPipeline.BuildAssetBundles(builder.DefaultBuildFolder, builds, BuildAssetBundleOptions.ForceRebuildAssetBundle, target);
 
 			RunPostBuild(packFileName, builder, author, proxy);
 		}
@@ -100,16 +100,17 @@ namespace Editor {
 		}
 
 		private void RunPostBuild(string fileName, CustomObjectsBuilderMeta builder, AuthorMeta author, CustomObjectsMeta.Proxy proxy) {
-			string filePath = Path.Combine(builder.BuildFolder, fileName);
+			string srcFilePath = Path.Combine(builder.DefaultBuildFolder, fileName);
+			string dstFilePath = Path.Combine(builder.BuildFolder, fileName);
 
-			if (!File.Exists(filePath)) {
-				Debug.LogError($"Kino: Unable to locate pack bundle at '{filePath}'");
+			if (!File.Exists(srcFilePath)) {
+				Debug.LogError($"Kino: Unable to locate pack bundle at '{srcFilePath}'");
 				return;
 			}
 
-			var fileContent = File.ReadAllBytes(filePath);
+			var fileContent = File.ReadAllBytes(srcFilePath);
 
-			using var fileStream = new FileStream(filePath, FileMode.Create);
+			using var fileStream = new FileStream(dstFilePath, FileMode.Create);
 			using var writer = new BinaryWriter(fileStream);
 
 			writer.Write(proxy.Magic);

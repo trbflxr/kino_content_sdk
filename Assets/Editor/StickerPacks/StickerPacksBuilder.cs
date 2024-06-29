@@ -57,7 +57,7 @@ namespace Editor {
 				}
 			};
 
-			BuildPipeline.BuildAssetBundles(builder.BuildFolder, builds, BuildAssetBundleOptions.ForceRebuildAssetBundle, target);
+			BuildPipeline.BuildAssetBundles(builder.DefaultBuildFolder, builds, BuildAssetBundleOptions.ForceRebuildAssetBundle, target);
 
 			RunPostBuild(packFileName, builder, author, pack);
 		}
@@ -97,20 +97,21 @@ namespace Editor {
 		}
 
 		private void RunPostBuild(string fileName, StickerPacksBuilderMeta builder, AuthorMeta author, StickerPackMeta meta) {
-			string filePath = Path.Combine(builder.BuildFolder, fileName);
+			string srcFilePath = Path.Combine(builder.DefaultBuildFolder, fileName);
+			string dstFilePath = Path.Combine(builder.BuildFolder, fileName);
 
-			if (!File.Exists(filePath)) {
-				Debug.LogError($"Kino: Unable to locate sticker pack bundle at '{filePath}'");
+			if (!File.Exists(srcFilePath)) {
+				Debug.LogError($"Kino: Unable to locate sticker pack bundle at '{srcFilePath}'");
 				return;
 			}
 
-			var encryptedData = EncryptBundle(filePath, meta);
+			var encryptedData = EncryptBundle(srcFilePath, meta);
 			if (encryptedData == null) {
 				Debug.LogError($"Kino: Unable to encrypt sticker pack '{meta.Name}'");
 				return;
 			}
 
-			using var fileStream = new FileStream(filePath, FileMode.Create);
+			using var fileStream = new FileStream(dstFilePath, FileMode.Create);
 			using var writer = new BinaryWriter(fileStream);
 
 			writer.Write(builder.Version);
