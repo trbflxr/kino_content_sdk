@@ -120,7 +120,6 @@ namespace Editor {
 			writer.Write(proxy.Id);
 			writer.Write(author.SteamId);
 			writer.Write(author.DiscordId);
-			writer.Write(fileContent.Length);
 			writer.Write(fileContent);
 		}
 
