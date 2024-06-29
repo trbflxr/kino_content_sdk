@@ -118,6 +118,11 @@ namespace Editor {
 					Stickers.Add(sticker);
 				}
 			}
+
+			EditorUtility.SetDirty(this);
+			AssetDatabase.SaveAssets();
+
+			Validate();
 		}
 
 		public void SetAllStickersSymmetry(bool symmetry) {
@@ -132,25 +137,16 @@ namespace Editor {
 			}
 		}
 
-		internal string GetRoot() {
-			string assetPath = AssetDatabase.GetAssetPath(this);
-			var rootFolder = Path.GetDirectoryName(assetPath);
-			if (string.IsNullOrWhiteSpace(rootFolder)) {
-				Debug.LogError("Kino: Unable to get current asset directory");
-				return null;
-			}
-
-			return rootFolder;
-		}
-
-		private void OnValidate() {
+		public override bool Validate() {
 			if (Stickers == null) {
-				return;
+				return false;
 			}
 
 			foreach (var s in Stickers) {
 				s.Validate();
 			}
+
+			return true;
 		}
 	}
 

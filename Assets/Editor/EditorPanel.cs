@@ -12,5 +12,10 @@ namespace Editor {
 		public static void OpenStickersWindow() {
 			GetWindow(typeof(StickerPacksTool));
 		}
+
+		[MenuItem("Kino/Custom Objects tool", false, 2)]
+		public static void OpenObjectsWindow() {
+			GetWindow(typeof(CustomObjectsTool));
+		}
 	}
 }

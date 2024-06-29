@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9d1e61780b466da6c3073ffcf46d92, type: 3}
+  m_Name: __example_objects_meta
+  m_EditorClassIdentifier: 
+  SelectedToBuild: 1
+  Name: example_objects_pack
+  Id: 9025678078055022592
+  Type: 0
+  Description: description
+  Version: 100
+  Objects:
+  - name: TheCube
+    Prefab: {fileID: 542307965330435832, guid: 9eff9803faf3d564ba40f8a739113095, type: 3}
+    FilePath: Assets/Content/CustomObjects/Example/TheCube.prefab
+  - name: TheSphere
+    Prefab: {fileID: 1637087285787707386, guid: c69ae5c22383e6346bf1513930fbe751, type: 3}
+    FilePath: Assets/Content/CustomObjects/Example/TheSphere.prefab

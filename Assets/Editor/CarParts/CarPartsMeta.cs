@@ -82,8 +82,10 @@ namespace Editor {
 				name = Prefab.name;
 				FilePath = AssetDatabase.GetAssetPath(Prefab);
 			}
+			else {
+				name = "unknown";
+			}
 
-			name = Prefab ? Prefab.name : "unknown";
 			if (forceRegenerateId || Id == 0) {
 				Id = Utils.GetId();
 			}
@@ -187,7 +189,7 @@ namespace Editor {
 			return meta;
 		}
 
-		public bool ForceValidate() {
+		public override bool Validate() {
 			if (Parts == null) {
 				return false;
 			}
@@ -305,7 +307,7 @@ namespace Editor {
 			DrawProp("Parts");
 
 			if (GUILayout.Button("Validate all parts")) {
-				script.ForceValidate();
+				script.Validate();
 			}
 
 			serializedObject.ApplyModifiedProperties();

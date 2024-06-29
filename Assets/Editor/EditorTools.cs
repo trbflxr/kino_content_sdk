@@ -9,6 +9,7 @@ using Debug = UnityEngine.Debug;
 namespace Editor {
 	public class CarPartsTool : BaseEditorTool<CarPartsBuilderMeta, CarPartsMeta, CarPartsBuilder> { }
 	public class StickerPacksTool : BaseEditorTool<StickerPacksBuilderMeta, StickerPackMeta, StickerPacksBuilder> { }
+	public class CustomObjectsTool : BaseEditorTool<CustomObjectsBuilderMeta, CustomObjectsMeta, CustomObjectsBuilder> { }
 
 	public abstract class BaseEditorTool<T, V, B> : EditorWindow where T : BaseBuilderMeta<T> where V : BaseEntryMeta<V> where B : BaseBuilder<T, V>, new() {
 		protected const float OFFSET = 5.0f;
