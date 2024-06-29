@@ -71,7 +71,7 @@ namespace Editor {
 
 			foreach (var s in Stickers) {
 				var stickerMeta = new StickerMeta.Proxy {
-					ImageName = s.Image ? s.Image.name : "",
+					ImageName = s.Image ? s.Image.name : string.Empty,
 					SymmetricalFlip = s.SymmetricalFlip
 				};
 
@@ -85,7 +85,19 @@ namespace Editor {
 			return meta;
 		}
 
-		public void RefreshAssets() {
+		public override bool Validate() {
+			if (Stickers == null) {
+				return false;
+			}
+
+			foreach (var s in Stickers) {
+				s.Validate();
+			}
+
+			return true;
+		}
+
+		public override void RefreshEditor() {
 			string rootFolder = GetRoot();
 			if (string.IsNullOrWhiteSpace(rootFolder)) {
 				return;
@@ -136,29 +148,21 @@ namespace Editor {
 				sticker.SymmetricalFlip = symmetry;
 			}
 		}
-
-		public override bool Validate() {
-			if (Stickers == null) {
-				return false;
-			}
-
-			foreach (var s in Stickers) {
-				s.Validate();
-			}
-
-			return true;
-		}
 	}
 
 	[CustomEditor(typeof(StickerPackMeta))]
-	public class PackMetaEditor : UnityEditor.Editor {
+	public class PackMetaEditor : BaseMetaEditor<StickerPackMeta> {
+		public PackMetaEditor() : base(true) { }
+
 		public override void OnInspectorGUI() {
-			base.OnInspectorGUI();
 			var script = (StickerPackMeta) target;
 
-			if (GUILayout.Button("Refresh assets")) {
-				script.RefreshAssets();
-			}
+			DrawProp("Name");
+			DrawProp("Description");
+			DrawProp("EncryptionKey");
+			DrawProp("Version");
+			DrawProp("PackIcon");
+			DrawProp("Stickers");
 
 			GUILayout.BeginHorizontal();
 
@@ -171,6 +175,10 @@ namespace Editor {
 			}
 
 			GUILayout.EndHorizontal();
+
+			GUILayout.Space(5);
+
+			base.OnInspectorGUI();
 		}
 	}
 }

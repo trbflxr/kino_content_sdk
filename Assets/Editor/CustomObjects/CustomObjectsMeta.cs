@@ -129,7 +129,7 @@ namespace Editor {
 			return true;
 		}
 
-		public void RefreshAssets() {
+		public override void RefreshEditor() {
 			string rootFolder = GetRoot();
 			if (string.IsNullOrWhiteSpace(rootFolder)) {
 				return;
@@ -174,38 +174,17 @@ namespace Editor {
 	}
 
 	[CustomEditor(typeof(CustomObjectsMeta))]
-	public class CustomObjectsMetaEditor : UnityEditor.Editor {
-		public override void OnInspectorGUI() {
-			var script = (CustomObjectsMeta) target;
+	public class CustomObjectsMetaEditor : BaseMetaEditor<CustomObjectsMeta> {
+		public CustomObjectsMetaEditor() : base(true) { }
 
+		public override void OnInspectorGUI() {
 			DrawProp("Type");
 			DrawProp("Name");
 			DrawProp("Description");
 			DrawProp("Version");
 			DrawProp("Objects");
 
-			if (GUILayout.Button("Refresh assets")) {
-				script.RefreshAssets();
-			}
-
-			if (GUILayout.Button("Validate all objects")) {
-				script.Validate();
-			}
-
-			serializedObject.ApplyModifiedProperties();
-		}
-
-		private void DrawProp(string propName, string propText = null) {
-			var prop = serializedObject.FindProperty(propName);
-			if (prop == null) {
-				return;
-			}
-
-			if (string.IsNullOrWhiteSpace(propText)) {
-				propText = propName;
-			}
-
-			EditorGUILayout.PropertyField(prop, new GUIContent(propText, prop.tooltip));
+			base.OnInspectorGUI();
 		}
 	}
 }

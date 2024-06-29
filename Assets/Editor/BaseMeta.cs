@@ -52,6 +52,8 @@ namespace Editor {
 		[Tooltip("Have to be lowercase with only Latin letters, digits and underscores (_), without any spaces")]
 		public string Name = "item_name";
 
+		public virtual void RefreshEditor() { }
+
 		public string GetRoot() {
 			string assetPath = AssetDatabase.GetAssetPath(this);
 			var rootFolder = Path.GetDirectoryName(assetPath);

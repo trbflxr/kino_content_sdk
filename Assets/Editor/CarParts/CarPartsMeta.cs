@@ -201,17 +201,6 @@ namespace Editor {
 			return valid_;
 		}
 
-		public string GetRoot() {
-			string assetPath = AssetDatabase.GetAssetPath(this);
-			var rootFolder = Path.GetDirectoryName(assetPath);
-			if (string.IsNullOrWhiteSpace(rootFolder)) {
-				Debug.LogError($"Kino: Unable to get {Name} ({Type}) asset directory");
-				return null;
-			}
-
-			return rootFolder;
-		}
-
 		private void OnValidate() {
 			valid_ = false;
 
@@ -288,7 +277,9 @@ namespace Editor {
 	}
 
 	[CustomEditor(typeof(CarPartsMeta))]
-	public class PartPackMetaEditor : UnityEditor.Editor {
+	public class PartPackMetaEditor : BaseMetaEditor<CarPartsMeta> {
+		public PartPackMetaEditor() : base(false) { }
+
 		public override void OnInspectorGUI() {
 			var script = (CarPartsMeta) target;
 
@@ -306,24 +297,7 @@ namespace Editor {
 			DrawProp("Version");
 			DrawProp("Parts");
 
-			if (GUILayout.Button("Validate all parts")) {
-				script.Validate();
-			}
-
-			serializedObject.ApplyModifiedProperties();
-		}
-
-		private void DrawProp(string propName, string propText = null) {
-			var prop = serializedObject.FindProperty(propName);
-			if (prop == null) {
-				return;
-			}
-
-			if (string.IsNullOrWhiteSpace(propText)) {
-				propText = propName;
-			}
-
-			EditorGUILayout.PropertyField(prop, new GUIContent(propText, prop.tooltip));
+			base.OnInspectorGUI();
 		}
 	}
 }
