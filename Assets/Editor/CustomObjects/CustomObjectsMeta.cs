@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Editor {
 	public enum ObjectsType {
@@ -112,6 +114,11 @@ namespace Editor {
 
 			Debug.Log($"Kino: Validating objects list {Name}");
 
+			int removed = Objects.RemoveAll(meta => !meta.Prefab);
+			if (removed != 0) {
+				Debug.LogWarning($"Kino: Removed {removed} empty entries");
+			}
+
 			if (Objects.Count == 0) {
 				Debug.LogWarning($"Kino: No custom objects added");
 				return false;
@@ -121,10 +128,13 @@ namespace Editor {
 				objectMeta.Validate();
 
 				if (!objectMeta.Prefab) {
-					Debug.LogWarning($"Kino: Prefab is not set for object '{objectMeta.name}'");
+					Debug.LogError($"Kino: Prefab is not set for object '{objectMeta.name}'");
 					return false;
 				}
 			}
+
+			EditorUtility.SetDirty(this);
+			AssetDatabase.SaveAssets();
 
 			return true;
 		}
@@ -138,11 +148,6 @@ namespace Editor {
 			string[] files = Directory.GetFiles(rootFolder, "*.prefab", SearchOption.TopDirectoryOnly);
 
 			Debug.Log($"Kino: Found {files.Length} prefabs, processing");
-
-			int removed = Objects.RemoveAll(meta => !meta.Prefab);
-			if (removed != 0) {
-				Debug.Log($"Kino: Removed {removed} broken prefabs");
-			}
 
 			foreach (var filePath in files) {
 				string fileName = Path.GetFileName(filePath);
@@ -165,9 +170,6 @@ namespace Editor {
 					Objects.Add(objectMeta);
 				}
 			}
-
-			EditorUtility.SetDirty(this);
-			AssetDatabase.SaveAssets();
 
 			Validate();
 		}

@@ -94,6 +94,9 @@ namespace Editor {
 				s.Validate();
 			}
 
+			EditorUtility.SetDirty(this);
+			AssetDatabase.SaveAssets();
+
 			return true;
 		}
 
@@ -130,9 +133,6 @@ namespace Editor {
 					Stickers.Add(sticker);
 				}
 			}
-
-			EditorUtility.SetDirty(this);
-			AssetDatabase.SaveAssets();
 
 			Validate();
 		}
