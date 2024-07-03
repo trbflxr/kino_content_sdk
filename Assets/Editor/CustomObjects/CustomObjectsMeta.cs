@@ -145,9 +145,15 @@ namespace Editor {
 				return;
 			}
 
-			string[] files = Directory.GetFiles(rootFolder, "*.prefab", SearchOption.TopDirectoryOnly);
+			var files = Directory.EnumerateFiles(rootFolder, "*.*", SearchOption.TopDirectoryOnly)
+				.Where(file => {
+					file = file.ToLower();
+					return file.EndsWith(".prefab")
+					       || file.EndsWith(".blend")
+					       || file.EndsWith(".fbx");
+				}).ToList();
 
-			Debug.Log($"Kino: Found {files.Length} prefabs, processing");
+			Debug.Log($"Kino: Found {files.Count} prefabs, processing");
 
 			foreach (var filePath in files) {
 				string fileName = Path.GetFileName(filePath);
@@ -164,7 +170,7 @@ namespace Editor {
 
 				string prefabName = objectMeta.Prefab.name;
 
-				int index = Objects.FindIndex(s => s.Prefab.name == prefabName);
+				int index = Objects.FindIndex(s => s.Prefab && s.Prefab.name == prefabName);
 				if (index == -1) {
 					Debug.Log($"Kino: Added new prefab '{prefabName}'");
 					Objects.Add(objectMeta);
