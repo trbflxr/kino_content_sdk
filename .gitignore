@@ -18,5 +18,9 @@ UserSettings
 Temp
 Build
 
+# blender
+*.blend1
+*.blend1.meta
+
 #osx
 .DS_Store
