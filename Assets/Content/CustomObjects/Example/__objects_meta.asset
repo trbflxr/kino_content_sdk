@@ -10,15 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd9d1e61780b466da6c3073ffcf46d92, type: 3}
-  m_Name: __example_objects_meta
+  m_Name: __objects_meta
   m_EditorClassIdentifier: 
   SelectedToBuild: 1
-  Name: example_objects_pack
+  Name: objects_test
   Id: 9025678078055022592
   Type: 0
   Description: description
   Version: 100
   Objects:
+  - name: test1
+    Prefab: {fileID: 919132149155446097, guid: 24cb1648506f1d542812b93de49bca90, type: 3}
+    FilePath: Assets/Content/CustomObjects/Example/test1.blend
+  - name: test_model
+    Prefab: {fileID: 919132149155446097, guid: 737e890b1634aa54594656e44ba8a821, type: 3}
+    FilePath: Assets/Content/CustomObjects/Example/test_model.fbx
   - name: TheCube
     Prefab: {fileID: 542307965330435832, guid: 9eff9803faf3d564ba40f8a739113095, type: 3}
     FilePath: Assets/Content/CustomObjects/Example/TheCube.prefab
