@@ -31,3 +31,6 @@ MonoBehaviour:
   - name: TheSphere
     Prefab: {fileID: 1637087285787707386, guid: c69ae5c22383e6346bf1513930fbe751, type: 3}
     FilePath: Assets/Content/CustomObjects/Example/TheSphere.prefab
+  - name: Torus
+    Prefab: {fileID: 2591247956676048887, guid: 24e53d334551fd34ba4f91cd69998fc7, type: 3}
+    FilePath: Assets/Content/CustomObjects/Example/Torus.prefab
