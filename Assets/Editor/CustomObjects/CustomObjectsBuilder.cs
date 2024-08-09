@@ -51,6 +51,10 @@ namespace Editor {
 				}
 			};
 
+			if (!Directory.Exists(builder.DefaultBuildFolder)) {
+				Directory.CreateDirectory(builder.DefaultBuildFolder);
+			}
+
 			BuildPipeline.BuildAssetBundles(builder.DefaultBuildFolder, builds, BuildAssetBundleOptions.ForceRebuildAssetBundle, target);
 
 			RunPostBuild(packFileName, builder, author, proxy);
