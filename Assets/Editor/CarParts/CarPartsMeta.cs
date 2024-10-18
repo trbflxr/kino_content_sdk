@@ -120,6 +120,7 @@ namespace Editor {
 			public string Description;
 			public string PackIcon;
 			public int Version;
+			public bool AllowPartsDump;
 
 			public List<PartMeta.Proxy> Parts;
 		}
@@ -150,6 +151,9 @@ namespace Editor {
 		[Tooltip("Pack version")]
 		public int Version = 100;
 
+		[Tooltip("Will it be possible to dump parts using the Kino Car dumper?\nWe recommend allowing dumping since it's necessary for livery creators to access the full model")]
+		public bool AllowPartsDump = true;
+
 		public List<PartMeta> Parts;
 
 		private bool valid_;
@@ -164,6 +168,7 @@ namespace Editor {
 				Version = Version,
 				Description = Description,
 				PackIcon = string.Empty,
+				AllowPartsDump = AllowPartsDump,
 				Parts = new List<PartMeta.Proxy>()
 			};
 
@@ -315,6 +320,11 @@ namespace Editor {
 			DrawProp("Description");
 			DrawProp("PackIcon");
 			DrawProp("Version");
+
+			if (script.Type == PackType.CarParts) {
+				DrawProp("AllowPartsDump");
+			}
+
 			DrawProp("Parts");
 
 			base.OnInspectorGUI();

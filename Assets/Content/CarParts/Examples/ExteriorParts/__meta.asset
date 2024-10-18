@@ -21,6 +21,7 @@ MonoBehaviour:
   Description: example exterior parts
   PackIcon: {fileID: 2800000, guid: 36697cba451668b4fae06ee18188d5d0, type: 3}
   Version: 100
+  AllowPartsDump: 1
   Parts:
   - name: bumper_front
     Type: 8
