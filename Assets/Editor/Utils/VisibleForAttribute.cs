@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,11 +8,16 @@ using UnityEngine;
 namespace Editor {
 	[AttributeUsage(AttributeTargets.Field)]
 	public abstract class VisibleForAttribute : PropertyAttribute {
-		public PartType Type { get; }
+		public PartType[] Type { get; }
 
-		protected VisibleForAttribute(PartType type) {
+		protected VisibleForAttribute(params PartType[] type) {
 			Type = type;
 		}
+	}
+
+	[AttributeUsage(AttributeTargets.Field)]
+	public class BoolVisibleForAttribute : VisibleForAttribute {
+		public BoolVisibleForAttribute(params PartType[] type) : base(type) { }
 	}
 
 	[AttributeUsage(AttributeTargets.Field)]
@@ -19,16 +25,23 @@ namespace Editor {
 		public float Min { get; }
 		public float Max { get; }
 
-		public RangeVisibleForAttribute(float min, float max, PartType type) : base(type) {
+		public RangeVisibleForAttribute(float min, float max, params PartType[] type) : base(type) {
 			Min = min;
 			Max = max;
 		}
 	}
 
-	[CustomPropertyDrawer(typeof(RangeVisibleForAttribute))]
-	public class VisibleForDrawer : PropertyDrawer {
-		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
-			var attrib = (RangeVisibleForAttribute) attribute;
+	public class BasePropertyDrawer : PropertyDrawer {
+		public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
+			if (ShouldDisplayField(property)) {
+				return EditorGUI.GetPropertyHeight(property, label);
+			}
+
+			return 0.0f;
+		}
+
+		protected bool ShouldDisplayField(SerializedProperty property) {
+			var attrib = (VisibleForAttribute) attribute;
 
 			var rootPath = Path.GetFileNameWithoutExtension(property.propertyPath);
 			var typePath = $"{rootPath}.Type";
@@ -40,10 +53,33 @@ namespace Editor {
 				holderType = (PartType) objType.intValue;
 			}
 
-			if (attrib.Type != holderType) {
+			if (attrib.Type == null || !attrib.Type.Contains(holderType)) {
+				return false;
+			}
+
+			return true;
+		}
+	}
+
+	[CustomPropertyDrawer(typeof(BoolVisibleForAttribute))]
+	public class VisibleForDrawer : BasePropertyDrawer {
+		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
+			if (!ShouldDisplayField(property)) {
 				return;
 			}
 
+			property.boolValue = EditorGUI.Toggle(position, label, property.boolValue);
+		}
+	}
+
+	[CustomPropertyDrawer(typeof(RangeVisibleForAttribute))]
+	public class RangeVisibleForDrawer : BasePropertyDrawer {
+		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
+			if (!ShouldDisplayField(property)) {
+				return;
+			}
+
+			var attrib = (RangeVisibleForAttribute) attribute;
 			EditorGUI.Slider(position, property, attrib.Min, attrib.Max, label);
 		}
 	}

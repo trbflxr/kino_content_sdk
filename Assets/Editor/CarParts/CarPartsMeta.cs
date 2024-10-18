@@ -34,8 +34,8 @@ namespace Editor {
 		Roof,
 		Exhaust,
 		Cage,
-		// LightsFront,
-		// LightsRear
+		LightsFront,
+		LightsRear
 	}
 
 	[Serializable]
@@ -49,6 +49,9 @@ namespace Editor {
 			public string IconPath;
 
 			public float SteeringWheelSize;
+			public bool IsPopups;
+			public bool OverrideTurnSignals;
+			public bool OverrideBrakeLight;
 		}
 
 		[HideInInspector]
@@ -76,6 +79,18 @@ namespace Editor {
 		[Tooltip("Steering wheel size. Needed for correct driver animation")]
 		[RangeVisibleFor(0.05f, 0.4f, PartType.SteeringWheel)]
 		public float SteeringWheelSize = 0.3f;
+
+		// [Tooltip("Consider this lights as popups")]
+		// [BoolVisibleFor(PartType.LightsFront)]
+		// public bool IsPopups = false;
+
+		[Tooltip("Use turn signals instead of generic Kino lights")]
+		[BoolVisibleFor(PartType.LightsFront, PartType.LightsRear)]
+		public bool OverrideTurnSignals = false;
+
+		[Tooltip("If TRUE, the standard CarX brakelight light source will be disabled")]
+		[BoolVisibleFor(PartType.LightsRear)]
+		public bool OverrideBrakeLight = false;
 
 		public void Validate(bool forceRegenerateId) {
 			if (Prefab) {
@@ -172,7 +187,12 @@ namespace Editor {
 					IconPath = string.Empty,
 					Id = part.Id,
 					ReplacementId = part.ReplacementId,
-					SteeringWheelSize = part.SteeringWheelSize
+
+					SteeringWheelSize = part.SteeringWheelSize,
+
+					// IsPopups = part.IsPopups,
+					OverrideTurnSignals = part.OverrideTurnSignals,
+					OverrideBrakeLight = part.OverrideBrakeLight
 				};
 
 				if (string.IsNullOrWhiteSpace(partMeta.FilePath)) {

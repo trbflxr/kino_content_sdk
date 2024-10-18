@@ -30,6 +30,8 @@ MonoBehaviour:
     ReplacementId: 63027
     Id: 29185350
     SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideBrakeLight: 0
   - name: bumper_rear
     Type: 9
     Prefab: {fileID: 6896611538770031491, guid: 4bfda84fcc0cbee459c5990588e42fe5, type: 3}
@@ -38,6 +40,8 @@ MonoBehaviour:
     ReplacementId: 63030
     Id: 29185712
     SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideBrakeLight: 0
   - name: side_skirts
     Type: 10
     Prefab: {fileID: 8842311084097144222, guid: bc1e85fa2c9ed8b4f81a6234040069b7, type: 3}
@@ -46,6 +50,8 @@ MonoBehaviour:
     ReplacementId: 63063
     Id: 29188012
     SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideBrakeLight: 0
   - name: doors
     Type: 11
     Prefab: {fileID: 4322040766641817395, guid: 50be4400319dc7342b00b4d8078420e4, type: 3}
@@ -54,6 +60,8 @@ MonoBehaviour:
     ReplacementId: 63037
     Id: 29190242
     SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideBrakeLight: 0
   - name: side_mirrors
     Type: 12
     Prefab: {fileID: 3103356679313826730, guid: 4de7aaf41d9a43e49831a5fd0d4bf2da, type: 3}
@@ -62,6 +70,8 @@ MonoBehaviour:
     ReplacementId: 63120
     Id: 29188186
     SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideBrakeLight: 0
   - name: bonnet
     Type: 13
     Prefab: {fileID: 2998365601440361955, guid: f8a2c9c6c969e08478bc24c25b416e55, type: 3}
@@ -70,6 +80,8 @@ MonoBehaviour:
     ReplacementId: 63111
     Id: 29188501
     SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideBrakeLight: 0
   - name: trunk
     Type: 14
     Prefab: {fileID: 759136051997413343, guid: de40674efe1eafc4299002058a4bb215, type: 3}
@@ -78,6 +90,8 @@ MonoBehaviour:
     ReplacementId: 63052
     Id: 29188720
     SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideBrakeLight: 0
   - name: spoiler
     Type: 15
     Prefab: {fileID: 6149268208293790798, guid: 32c3a16f8a34d21498fcacc6ad491e82, type: 3}
@@ -86,6 +100,8 @@ MonoBehaviour:
     ReplacementId: 63050
     Id: 29183577
     SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideBrakeLight: 0
   - name: roof
     Type: 16
     Prefab: {fileID: 450599057309713642, guid: 78c91b4971494f541a23818042e4370f, type: 3}
@@ -94,6 +110,8 @@ MonoBehaviour:
     ReplacementId: 63078
     Id: 29188944
     SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideBrakeLight: 0
   - name: exhaust
     Type: 17
     Prefab: {fileID: 7575381526045103269, guid: 89164847caffa704ca933633b5a6ea16, type: 3}
@@ -102,6 +120,8 @@ MonoBehaviour:
     ReplacementId: 63038
     Id: 29189123
     SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideBrakeLight: 0
   - name: cage
     Type: 18
     Prefab: {fileID: 3211840301065738995, guid: f9a5b7e0d2e16954bbc529837ef2f35f, type: 3}
@@ -110,6 +130,8 @@ MonoBehaviour:
     ReplacementId: 63054
     Id: 29189681
     SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideBrakeLight: 0
   - name: bonnet_uv_test
     Type: 13
     Prefab: {fileID: 4647920301854032328, guid: a9cc4f3be2287fb40a06320b04a6ee6c, type: 3}
@@ -118,3 +140,25 @@ MonoBehaviour:
     ReplacementId: 63022
     Id: 29193535
     SteeringWheelSize: 0
+    OverrideTurnSignals: 1
+    OverrideBrakeLight: 0
+  - name: 190e_missile0_separate
+    Type: 19
+    Prefab: {fileID: 4738629725383404070, guid: b468a1e9efbc2c94ba198c3763888e8b, type: 3}
+    Icon: {fileID: 2800000, guid: 5bd0655721f52e2408f10fb4205ed3a1, type: 3}
+    FilePath: Assets/Content/CarParts/Examples/ExteriorParts/190e_missile0_separate.prefab
+    ReplacementId: 63071
+    Id: 56466621
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 1
+    OverrideBrakeLight: 0
+  - name: 190e_tail_stock
+    Type: 20
+    Prefab: {fileID: 7041995372179974280, guid: 25888d2557eedd844a38ac37f83075a7, type: 3}
+    Icon: {fileID: 2800000, guid: 5bd0655721f52e2408f10fb4205ed3a1, type: 3}
+    FilePath: Assets/Content/CarParts/Examples/ExteriorParts/190e_tail_stock.prefab
+    ReplacementId: 63071
+    Id: 56481803
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 1
+    OverrideBrakeLight: 0
