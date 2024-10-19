@@ -57,26 +57,29 @@ namespace Editor {
 		[HideInInspector]
 		public string name = "unknown";
 
-		[Tooltip("Type of the part, have to match with the pack type")]
+		[Tooltip("Type of part.\n"
+		         + "Must match the type of the pack.")]
 		public PartType Type = PartType.Undefined;
 
 		[Tooltip("Part prefab, can't be null")]
 		public GameObject Prefab;
 
-		[Tooltip("[Optional] Part icon. Will be displayed on part card in the game")]
+		[Tooltip("[Optional] Part icon.\n"
+		         + "It will be displayed on the card in the part selector in the game.")]
 		public Texture2D Icon;
 
 		[HideInInspector]
 		public string FilePath = string.Empty;
 
-		[Tooltip("[Optional] Default CarX part ID that will be displayed for all players who don't have this pack")]
+		[Tooltip("[Optional] ID of the vanilla part that closely resembles this one.\n"
+		         + "This part will be displayed instead of the custom one for users who do not have this pack installed.")]
 		public int ReplacementId;
 
 		[ReadOnly]
 		[Tooltip("Part 'unique' ID")]
 		public int Id;
 
-		[Tooltip("Steering wheel size. Needed for correct driver animation")]
+		[Tooltip("Steering wheel size.\nSet the exact size for the animation to work correctly in the game.")]
 		[RangeVisibleFor(0.05f, 0.4f, PartType.SteeringWheel)]
 		public float SteeringWheelSize = 0.3f;
 
@@ -84,11 +87,12 @@ namespace Editor {
 		// [BoolVisibleFor(PartType.LightsFront)]
 		// public bool IsPopups = false;
 
-		[Tooltip("Use turn signals instead of generic Kino lights")]
+		[Tooltip("Set to TRUE if you want to disable the default hazard light sources from Kino.\n"
+		         + "It is recommended to enable the override and configure custom light sources for a better appearance.")]
 		[BoolVisibleFor(PartType.LightsFront, PartType.LightsRear)]
 		public bool OverrideTurnSignals = false;
 
-		[Tooltip("If TRUE, the standard CarX brakelight light source will be disabled")]
+		[Tooltip("Set to TRUE if you want to hide the default brake light source from CarX.")]
 		[BoolVisibleFor(PartType.LightsRear)]
 		public bool OverrideBrakeLight = false;
 
@@ -131,21 +135,23 @@ namespace Editor {
 		[Tooltip("Pack unique ID")]
 		public ulong Id = Utils.GenerateUniqueId();
 
-		[Tooltip("Pack parts type")]
+		[Tooltip("Type of parts in the pack")]
 		public PackType Type = PackType.Undefined;
 
 		[HideInInspector]
-		[Tooltip("Specify the car the part is intended for")]
+		[Tooltip("Car ID for which the pack is intended")]
 		public int TargetCarId = -1;
 
-		[Tooltip("[Optional] Category name. Will be displayed on the pack card in the game")]
+		[Tooltip("[Optional] Category name.\n"
+		         + "It will be displayed on the card in the part selector in the game.\n"
+		         + "Parts with the same category name will be grouped in one list, even if they are from different packs.")]
 		public string CategoryName = "kino";
 
 		[TextArea(4, 20)]
 		[Tooltip("Pack description")]
 		public string Description = string.Empty;
 
-		[Tooltip("[Optional] Part icon. Will be displayed on pack card in the game")]
+		[Tooltip("[Optional] Pack icon.\nIt will be displayed on the category card in the part selector in the game.")]
 		public Texture2D PackIcon = null;
 
 		[Tooltip("Pack version")]
@@ -307,6 +313,8 @@ namespace Editor {
 
 		public override void OnInspectorGUI() {
 			var script = (CarPartsMeta) target;
+
+			EditorGUILayout.LabelField("Each field has a tooltip. Hold the cursor over it to see the tooltip.", EditorStyles.boldLabel);
 
 			DrawProp("Id");
 			DrawProp("Type");

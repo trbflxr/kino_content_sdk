@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Editor {
 	public enum ObjectsType {
@@ -66,11 +65,11 @@ namespace Editor {
 		[Tooltip("Objects pack unique ID")]
 		public ulong Id = Utils.GenerateUniqueId();
 
-		[Tooltip("[Optional] Type of the object")]
+		[Tooltip("[Optional] Type of object pack")]
 		public ObjectsType Type = ObjectsType.Undefined;
 
 		[TextArea(4, 20)]
-		[Tooltip("[Optional] Objects pack description")]
+		[Tooltip("[Optional] Pack description")]
 		public string Description = string.Empty;
 
 		[Tooltip("Objects pack version")]
@@ -186,6 +185,8 @@ namespace Editor {
 		public CustomObjectsMetaEditor() : base(true) { }
 
 		public override void OnInspectorGUI() {
+			EditorGUILayout.LabelField("Each field has a tooltip. Hold the cursor over it to see the tooltip.", EditorStyles.boldLabel);
+
 			DrawProp("Type");
 			DrawProp("Name");
 			DrawProp("Description");

@@ -55,6 +55,8 @@ namespace Editor {
 		public override void OnInspectorGUI() {
 			var script = (MapMeta) target;
 
+			EditorGUILayout.LabelField("Each field has a tooltip. Hold the cursor over it to see the tooltip.", EditorStyles.boldLabel);
+
 			DrawProp("Id");
 			DrawProp("Name");
 			DrawProp("Scene");

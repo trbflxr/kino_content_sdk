@@ -49,7 +49,7 @@ namespace Editor {
 	public abstract class BaseEntryMeta<T> : BaseMeta<T> where T : Object {
 		public bool SelectedToBuild = true;
 
-		[Tooltip("Have to be lowercase with only Latin letters, digits and underscores (_), without any spaces")]
+		[Tooltip("Pack name.\nIt should be in lowercase, consist only of Latin letters, numbers, and underscores (_), with <color=red>NO</color> spaces.")]
 		public string Name = "item_name";
 
 		public virtual void RefreshEditor() { }

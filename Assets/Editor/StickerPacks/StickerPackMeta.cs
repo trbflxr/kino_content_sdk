@@ -157,6 +157,8 @@ namespace Editor {
 		public override void OnInspectorGUI() {
 			var script = (StickerPackMeta) target;
 
+			EditorGUILayout.LabelField("Each field has a tooltip. Hold the cursor over it to see the tooltip.", EditorStyles.boldLabel);
+
 			DrawProp("Name");
 			DrawProp("Description");
 			DrawProp("EncryptionKey");
