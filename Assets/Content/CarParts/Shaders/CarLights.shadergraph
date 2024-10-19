@@ -772,7 +772,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "0948b965aab94362ac4ab468bac4bfb8",
     "m_Id": 0,
-    "m_DisplayName": "MaxEmission",
+    "m_DisplayName": "Emission",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1048,10 +1048,10 @@
     "m_Guid": {
         "m_GuidSerialized": "cbabe038-9332-49ea-9130-50261f2f8b1a"
     },
-    "m_Name": "MaxEmission",
+    "m_Name": "Emission",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "MaxEmission",
-    "m_DefaultReferenceName": "_MaxEmission",
+    "m_RefNameGeneratedByDisplayName": "Emission",
+    "m_DefaultReferenceName": "_Emission",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,

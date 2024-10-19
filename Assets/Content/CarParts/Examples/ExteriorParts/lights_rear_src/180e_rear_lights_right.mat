@@ -76,7 +76,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMasks:
-        m_Texture: {fileID: 2800000, guid: e25d333cf01af054a8159422249850d0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 382420bd6ac10df49a664e1106a20d8b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveColorMap:
@@ -284,6 +284,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
+    - _Emission: {r: 15, g: 5, b: 10, a: 10}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionIntensity: {r: 0, g: 0, b: 0, a: 0}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
