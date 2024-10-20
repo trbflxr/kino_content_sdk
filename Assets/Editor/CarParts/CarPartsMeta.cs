@@ -50,6 +50,7 @@ namespace Editor {
 
 			public float SteeringWheelSize;
 			public bool IsPopups;
+			public bool OverrideHeadlightsMask;
 			public bool OverrideTurnSignals;
 			public bool OverrideBrakeLight;
 		}
@@ -91,6 +92,10 @@ namespace Editor {
 		         + "It is recommended to enable the override and configure custom light sources for a better appearance.")]
 		[BoolVisibleFor(PartType.LightsFront, PartType.LightsRear)]
 		public bool OverrideTurnSignals = false;
+
+		[Tooltip("If TRUE is set, a custom mask (light cookie) will be used instead of the in-game mask for the headlights, if one is provided.\n")]
+		[BoolVisibleFor(PartType.LightsFront)]
+		public bool OverrideHeadlightsMask = false;
 
 		[Tooltip("Set to TRUE if you want to hide the default brake light source from CarX.")]
 		[BoolVisibleFor(PartType.LightsRear)]
@@ -202,6 +207,7 @@ namespace Editor {
 					SteeringWheelSize = part.SteeringWheelSize,
 
 					// IsPopups = part.IsPopups,
+					OverrideHeadlightsMask = part.OverrideHeadlightsMask,
 					OverrideTurnSignals = part.OverrideTurnSignals,
 					OverrideBrakeLight = part.OverrideBrakeLight
 				};

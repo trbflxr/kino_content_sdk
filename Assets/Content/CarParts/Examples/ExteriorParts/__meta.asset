@@ -32,6 +32,7 @@ MonoBehaviour:
     Id: 29185350
     SteeringWheelSize: 0
     OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
   - name: bumper_rear
     Type: 9
@@ -42,6 +43,7 @@ MonoBehaviour:
     Id: 29185712
     SteeringWheelSize: 0
     OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
   - name: side_skirts
     Type: 10
@@ -52,6 +54,7 @@ MonoBehaviour:
     Id: 29188012
     SteeringWheelSize: 0
     OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
   - name: doors
     Type: 11
@@ -62,6 +65,7 @@ MonoBehaviour:
     Id: 29190242
     SteeringWheelSize: 0
     OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
   - name: side_mirrors
     Type: 12
@@ -72,6 +76,7 @@ MonoBehaviour:
     Id: 29188186
     SteeringWheelSize: 0
     OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
   - name: bonnet
     Type: 13
@@ -82,6 +87,7 @@ MonoBehaviour:
     Id: 29188501
     SteeringWheelSize: 0
     OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
   - name: trunk
     Type: 14
@@ -92,6 +98,7 @@ MonoBehaviour:
     Id: 29188720
     SteeringWheelSize: 0
     OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
   - name: spoiler
     Type: 15
@@ -102,6 +109,7 @@ MonoBehaviour:
     Id: 29183577
     SteeringWheelSize: 0
     OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
   - name: roof
     Type: 16
@@ -112,6 +120,7 @@ MonoBehaviour:
     Id: 29188944
     SteeringWheelSize: 0
     OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
   - name: exhaust
     Type: 17
@@ -122,6 +131,7 @@ MonoBehaviour:
     Id: 29189123
     SteeringWheelSize: 0
     OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
   - name: cage
     Type: 18
@@ -132,6 +142,7 @@ MonoBehaviour:
     Id: 29189681
     SteeringWheelSize: 0
     OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
   - name: bonnet_uv_test
     Type: 13
@@ -142,6 +153,7 @@ MonoBehaviour:
     Id: 29193535
     SteeringWheelSize: 0
     OverrideTurnSignals: 1
+    OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
   - name: 190e_missile0_separate
     Type: 19
@@ -152,6 +164,7 @@ MonoBehaviour:
     Id: 56466621
     SteeringWheelSize: 0
     OverrideTurnSignals: 1
+    OverrideHeadlightsMask: 1
     OverrideBrakeLight: 0
   - name: 190e_tail_stock
     Type: 20
@@ -162,4 +175,5 @@ MonoBehaviour:
     Id: 56481803
     SteeringWheelSize: 0
     OverrideTurnSignals: 1
+    OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
