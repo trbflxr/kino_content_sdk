@@ -145,7 +145,7 @@ MonoBehaviour:
     OverrideBrakeLight: 0
   - name: 190e_missile0_separate
     Type: 19
-    Prefab: {fileID: 4738629725383404070, guid: b468a1e9efbc2c94ba198c3763888e8b, type: 3}
+    Prefab: {fileID: 6137253686741681866, guid: dad11ed9194e51c4e9b9cf1d6773d9e5, type: 3}
     Icon: {fileID: 2800000, guid: 5bd0655721f52e2408f10fb4205ed3a1, type: 3}
     FilePath: Assets/Content/CarParts/Examples/ExteriorParts/190e_missile0_separate.prefab
     ReplacementId: 63071

@@ -175,6 +175,7 @@ Material:
     - _BlendMode: 0
     - _CoatMask: 0
     - _ConservativeDepthOffsetEnable: 0
+    - _CoolSpeed: 20
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
@@ -201,6 +202,7 @@ Material:
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
     - _ExcludeFromTUAndAA: 0
+    - _HeatSpeed: 40
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
     - _HeightMapParametrization: 0
@@ -215,6 +217,7 @@ Material:
     - _IridescenceMask: 1
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
+    - _LitSpeed: 400
     - _MaterialID: 1
     - _MaterialTypeMask: 2
     - _Metallic: 0
