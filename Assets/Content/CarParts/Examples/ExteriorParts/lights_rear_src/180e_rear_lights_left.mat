@@ -75,6 +75,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _EmissionMask:
+        m_Texture: {fileID: 2800000, guid: 382420bd6ac10df49a664e1106a20d8b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMasks:
         m_Texture: {fileID: 2800000, guid: 382420bd6ac10df49a664e1106a20d8b, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -194,6 +198,10 @@ Material:
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 0
     - _DstBlend2: 0
+    - _EmissionLights: 10
+    - _EmissionReverse: 10
+    - _EmissionRunning: 5
+    - _EmissionTurn: 10
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
     - _EmissiveIntensity: 1
