@@ -20,7 +20,7 @@ namespace Editor {
 
 		public override bool Validate() {
 			if (string.IsNullOrWhiteSpace(Name)) {
-				Debug.LogError("Kino: Author's name can be empty");
+				Debug.LogError("Kino: Author's name cannot be empty");
 				return false;
 			}
 
