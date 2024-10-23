@@ -45,3 +45,25 @@ MonoBehaviour:
     OverrideTurnSignals: 1
     OverrideHeadlightsMask: 1
     OverrideBrakeLight: 0
+  - name: s13_stock_spoiler
+    Type: 15
+    Prefab: {fileID: 5478711106010991727, guid: 150ad8a9e87821448ad29dc801715dbb, type: 3}
+    Icon: {fileID: 2800000, guid: 514a3dc636a393341b0b91cac385f530, type: 3}
+    FilePath: Assets/Content/CarParts/Examples/ExteriorParts/s13/s13_stock_spoiler.prefab
+    ReplacementId: 9058
+    Id: 57132715
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 1
+    OverrideHeadlightsMask: 1
+    OverrideBrakeLight: 0
+  - name: s13_bumper_front
+    Type: 8
+    Prefab: {fileID: 2781071137130226390, guid: 21c2790f148a8774c8cd72d311f4358b, type: 3}
+    Icon: {fileID: 2800000, guid: 514a3dc636a393341b0b91cac385f530, type: 3}
+    FilePath: Assets/Content/CarParts/Examples/ExteriorParts/s13/s13_bumper_front.prefab
+    ReplacementId: 9031
+    Id: 57133901
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 1
+    OverrideHeadlightsMask: 1
+    OverrideBrakeLight: 0
