@@ -23,44 +23,44 @@ MonoBehaviour:
   Version: 100
   AllowPartsDump: 1
   Parts:
-  - name: s13_clear_tail
+  - name: prefab_s13_clear_tail
     Type: 20
-    Prefab: {fileID: 9157435931175334514, guid: d3e575537e90dfa47aec37180b460f6c, type: 3}
+    Prefab: {fileID: 1044911280117560648, guid: 87307b8c5297281488d78d82c3692bad, type: 3}
     Icon: {fileID: 2800000, guid: 514a3dc636a393341b0b91cac385f530, type: 3}
-    FilePath: Assets/Content/CarParts/Examples/ExteriorParts/s13/s13_clear_tail.prefab
+    FilePath: Assets/Content/CarParts/Examples/ExteriorParts/s13/prefab_s13_clear_tail.prefab
     ReplacementId: 9163
     Id: 57050868
     SteeringWheelSize: 0
     OverrideTurnSignals: 1
     OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
-  - name: s13_stock_front
+  - name: prefab_s13_lights_front
     Type: 19
-    Prefab: {fileID: 8333829591863597702, guid: 3282ad82a65a74341925dde15219e252, type: 3}
+    Prefab: {fileID: 8897498923620291498, guid: 4924f75833ccb624d8a1d36ad79117fb, type: 3}
     Icon: {fileID: 2800000, guid: 514a3dc636a393341b0b91cac385f530, type: 3}
-    FilePath: Assets/Content/CarParts/Examples/ExteriorParts/s13/s13_stock_front.prefab
+    FilePath: Assets/Content/CarParts/Examples/ExteriorParts/s13/prefab_s13_lights_front.prefab
     ReplacementId: 9148
     Id: 57076059
     SteeringWheelSize: 0
     OverrideTurnSignals: 1
     OverrideHeadlightsMask: 1
     OverrideBrakeLight: 0
-  - name: s13_stock_spoiler
+  - name: prefab_s13_stock_spoiler
     Type: 15
-    Prefab: {fileID: 5478711106010991727, guid: 150ad8a9e87821448ad29dc801715dbb, type: 3}
+    Prefab: {fileID: 5450689454740917426, guid: 803e3ed8f0a7f874b99ec5ce2c0aa031, type: 3}
     Icon: {fileID: 2800000, guid: 514a3dc636a393341b0b91cac385f530, type: 3}
-    FilePath: Assets/Content/CarParts/Examples/ExteriorParts/s13/s13_stock_spoiler.prefab
+    FilePath: Assets/Content/CarParts/Examples/ExteriorParts/s13/prefab_s13_stock_spoiler.prefab
     ReplacementId: 9058
     Id: 57132715
     SteeringWheelSize: 0
     OverrideTurnSignals: 1
     OverrideHeadlightsMask: 1
     OverrideBrakeLight: 0
-  - name: s13_bumper_front
+  - name: prefab_s13_bumper_front
     Type: 8
-    Prefab: {fileID: 2781071137130226390, guid: 21c2790f148a8774c8cd72d311f4358b, type: 3}
+    Prefab: {fileID: 3744697275024555377, guid: 13218e684f62bb64caf3df89b900494f, type: 3}
     Icon: {fileID: 2800000, guid: 514a3dc636a393341b0b91cac385f530, type: 3}
-    FilePath: Assets/Content/CarParts/Examples/ExteriorParts/s13/s13_bumper_front.prefab
+    FilePath: Assets/Content/CarParts/Examples/ExteriorParts/s13/prefab_s13_bumper_front.prefab
     ReplacementId: 9031
     Id: 57133901
     SteeringWheelSize: 0
