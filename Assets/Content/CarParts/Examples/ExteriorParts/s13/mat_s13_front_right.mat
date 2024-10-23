@@ -178,9 +178,9 @@ Material:
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 0
     - _DstBlend2: 0
-    - _EmissionLights_R: 20
+    - _EmissionLights_R: 25
     - _EmissionReverse_A: 10
-    - _EmissionRunning_G: 3
+    - _EmissionRunning_G: 10
     - _EmissionTurn_B: 15
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
