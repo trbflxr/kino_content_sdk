@@ -62,6 +62,9 @@
             "m_Id": "5fd5c8ffa3a7451dbb1b94ed8f3c38e2"
         },
         {
+            "m_Id": "60108ac4806a4585b74d6b5bd9604a2b"
+        },
+        {
             "m_Id": "b92167bff76a4c628014c731768945ae"
         }
     ],
@@ -1309,7 +1312,7 @@
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
-        "y": 50.0
+        "y": 100.0
     }
 }
 
@@ -2998,7 +3001,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"61e054d0590459f40aa00e392abccc87\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -3189,7 +3192,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
+        "m_SerializedTexture": "{\"texture\":{\"fileID\":2800000,\"guid\":\"a27582ff06708ef40b9496bb24f8e00e\",\"type\":3}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -3333,7 +3336,7 @@
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
-        "y": 50.0
+        "y": 100.0
     }
 }
 
@@ -3506,7 +3509,16 @@
         },
         {
             "m_Id": "4d591d410749cb859007e5ed57b92deb"
-        },
+        }
+    ]
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
+    "m_ObjectId": "60108ac4806a4585b74d6b5bd9604a2b",
+    "m_Name": "PBR Properties",
+    "m_ChildObjectList": [
         {
             "m_Id": "53b5e13bd4c46286bd926d2b366b0118"
         },
@@ -3800,7 +3812,7 @@
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
-        "y": 50.0
+        "y": 100.0
     }
 }
 
@@ -4336,7 +4348,7 @@
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
-        "y": 50.0
+        "y": 100.0
     }
 }
 
@@ -6720,7 +6732,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.05000000074505806,
+    "m_Value": 0.20000000298023225,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
