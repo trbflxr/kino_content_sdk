@@ -194,10 +194,10 @@ Material:
     - _DoubleSidedNormalMode: 1
     - _DstBlend: 0
     - _DstBlend2: 0
-    - _EmissionLights_R: 20
+    - _EmissionLights_R: 15
     - _EmissionReverse_A: 10
-    - _EmissionRunning_G: 3
-    - _EmissionTurn_B: 15
+    - _EmissionRunning_G: 7
+    - _EmissionTurn_B: 50
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
     - _EmissiveIntensity: 1
@@ -293,17 +293,17 @@ Material:
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionIntensity: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionIntensity: {r: 1, g: 0, b: 0, a: 0}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _LightColorOverride: {r: 0.8862745, g: 0.26666668, b: 0.26666668, a: 1}
+    - _LightColorOverride: {r: 0.8235294, g: 0, b: 0, a: 1}
     - _ReverseColorOverride: {r: 1, g: 0.96862745, b: 0.7647059, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TurnColorOverride: {r: 1, g: 0.70609945, b: 0, a: 1}
+    - _TurnColorOverride: {r: 1, g: 0.61960787, b: 0, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
