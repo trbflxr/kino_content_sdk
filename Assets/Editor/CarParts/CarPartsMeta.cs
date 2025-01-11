@@ -10,7 +10,7 @@ namespace Editor {
 	public enum PackType {
 		Undefined = 0,
 		Wheels,
-		InteriorParts,
+		UniversalInteriorParts,
 		CarParts
 	}
 
@@ -35,7 +35,8 @@ namespace Editor {
 		Exhaust,
 		Cage,
 		LightsFront,
-		LightsRear
+		LightsRear,
+		Interior
 	}
 
 	[Serializable]
@@ -281,7 +282,7 @@ namespace Editor {
 				bool isExterior = IsExteriorPart(part.Type);
 
 				if ((Type == PackType.Wheels && !isWheel)
-				    || (Type == PackType.InteriorParts && !isInterior)
+				    || (Type == PackType.UniversalInteriorParts && !isInterior)
 				    || (Type == PackType.CarParts && !isExterior)) {
 					Debug.LogWarning($"Kino: Part {part.name} ({part.Type}) is incompatible with pack {Name} ({Type}), because of type difference");
 					valid_ = false;
