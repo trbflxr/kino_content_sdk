@@ -39,8 +39,19 @@ MonoBehaviour:
     Prefab: {fileID: 6773854067434451721, guid: 32b817298e44a794d8243805e10e96bc, type: 3}
     Icon: {fileID: 2800000, guid: 7a9f1baf9fd9183409e2ba2ea1c30124, type: 3}
     FilePath: Assets/Content/CarParts/Examples/CustomInterior/srt10_bumper.prefab
-    ReplacementId: 99028
+    ReplacementId: 99062
     Id: 64074663
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+  - name: srt10_mirrors
+    Type: 12
+    Prefab: {fileID: 47891605183251245, guid: c99f4074144cee24ba9c106163b5d86c, type: 3}
+    Icon: {fileID: 2800000, guid: 7a9f1baf9fd9183409e2ba2ea1c30124, type: 3}
+    FilePath: Assets/Content/CarParts/Examples/CustomInterior/srt10_mirrors.prefab
+    ReplacementId: 99062
+    Id: 64171225
     SteeringWheelSize: 0
     OverrideTurnSignals: 0
     OverrideHeadlightsMask: 0
