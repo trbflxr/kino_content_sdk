@@ -72,7 +72,7 @@ namespace Editor {
 	}
 
 	public abstract class BaseBuilderMeta<T> : BaseEditorMeta<T> where T : Object {
-		public virtual int Version => 400;
+		public virtual int Version => 500;
 		public abstract string Ext { get; }
 		public abstract string DefaultBuildFolder { get; }
 
