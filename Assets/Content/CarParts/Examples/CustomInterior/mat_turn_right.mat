@@ -84,7 +84,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: b0a57143079affa46b595cc992d208d7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
@@ -155,6 +155,7 @@ Material:
     - _AlphaRemapMax: 1
     - _AlphaRemapMin: 0
     - _AlphaSrcBlend: 1
+    - _AmbientOcclussion: 0.2
     - _Anisotropy: 0
     - _BlendMode: 0
     - _CoatMask: 0
@@ -178,7 +179,7 @@ Material:
     - _DstBlend2: 0
     - _EmissionIndicatorIntensity: 0
     - _EmissionIntensity: 0
-    - _EmissionPower: 10
+    - _EmissionPower: 50
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
     - _EmissiveIntensity: 1
