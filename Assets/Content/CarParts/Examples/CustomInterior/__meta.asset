@@ -23,46 +23,35 @@ MonoBehaviour:
   Version: 100
   AllowPartsDump: 1
   Parts:
-  - name: srt10_interior
-    Type: 21
-    Prefab: {fileID: 322850086522527560, guid: 89ae2c0aee39c7147afa17660e4651f7, type: 3}
-    Icon: {fileID: 2800000, guid: 7a9f1baf9fd9183409e2ba2ea1c30124, type: 3}
-    FilePath: Assets/Content/CarParts/Examples/CustomInterior/srt10_interior.prefab
-    ReplacementId: 0
-    Id: 64073012
-    SteeringWheelSize: 0
-    OverrideTurnSignals: 0
-    OverrideHeadlightsMask: 0
-    OverrideBrakeLight: 0
-  - name: srt10_digital
-    Type: 21
-    Prefab: {fileID: 3228117706294240250, guid: 959492f9d23ba2b459542632f89a48f4, type: 3}
-    Icon: {fileID: 2800000, guid: 7a9f1baf9fd9183409e2ba2ea1c30124, type: 3}
-    FilePath: Assets/Content/CarParts/Examples/CustomInterior/srt10_digital.prefab
-    ReplacementId: 0
-    Id: 64074663
-    SteeringWheelSize: 0
-    OverrideTurnSignals: 0
-    OverrideHeadlightsMask: 0
-    OverrideBrakeLight: 0
-  - name: srt10_mirrors
-    Type: 12
-    Prefab: {fileID: 47891605183251245, guid: c99f4074144cee24ba9c106163b5d86c, type: 3}
-    Icon: {fileID: 2800000, guid: 7a9f1baf9fd9183409e2ba2ea1c30124, type: 3}
-    FilePath: Assets/Content/CarParts/Examples/CustomInterior/srt10_mirrors.prefab
-    ReplacementId: 99062
-    Id: 64171225
-    SteeringWheelSize: 0
-    OverrideTurnSignals: 0
-    OverrideHeadlightsMask: 0
-    OverrideBrakeLight: 0
   - name: srt10_bumper
     Type: 8
     Prefab: {fileID: 6773854067434451721, guid: 32b817298e44a794d8243805e10e96bc, type: 3}
     Icon: {fileID: 2800000, guid: 7a9f1baf9fd9183409e2ba2ea1c30124, type: 3}
     FilePath: Assets/Content/CarParts/Examples/CustomInterior/srt10_bumper.prefab
     ReplacementId: 99028
+    Id: 64074663
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+  - name: srt10_interior
+    Type: 21
+    Prefab: {fileID: 1500373433602594182, guid: 4a50f917f27b9e64f9cc94a683e5fec3, type: 3}
+    Icon: {fileID: 2800000, guid: e6590b46c027a0f4a9caaf6785b55eb0, type: 3}
+    FilePath: Assets/Content/CarParts/Examples/CustomInterior/srt10_interior.prefab
+    ReplacementId: 0
     Id: 64248433
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+  - name: srt10_interior_digital
+    Type: 21
+    Prefab: {fileID: 8791166974275054603, guid: 87f1e5109f2d4a34e954f46d30a03f4e, type: 3}
+    Icon: {fileID: 2800000, guid: 9bfae995f2c10214b8904c720d74f150, type: 3}
+    FilePath: Assets/Content/CarParts/Examples/CustomInterior/srt10_interior_digital.prefab
+    ReplacementId: 0
+    Id: 64571767
     SteeringWheelSize: 0
     OverrideTurnSignals: 0
     OverrideHeadlightsMask: 0
