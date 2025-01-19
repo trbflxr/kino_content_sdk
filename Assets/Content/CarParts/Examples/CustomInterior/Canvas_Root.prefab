@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 455437010292657259}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: indicaators
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 491340710780474041}
   - component: {fileID: 647239657630852523}
   - component: {fileID: 2252986622653147630}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: boost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 680362299523517073}
   - component: {fileID: 1290306170328968156}
   - component: {fileID: 2670055050213611673}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Arrow_Rpm_-z_0_300_10000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 1247729958800291392}
   - component: {fileID: 6917159350206399838}
   - component: {fileID: 6055732322845422017}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: boost_bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 3361331013004164475}
   - component: {fileID: 5262346899114701344}
   - component: {fileID: 2773204086805180925}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 6247588801325687126}
   - component: {fileID: 8249566479824859322}
   - component: {fileID: 1563597218276635603}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Indicator_HighBeams
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 764462623760688080}
   - component: {fileID: 2566775216404836820}
   - component: {fileID: 1553087836607140714}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: rpm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -683,7 +683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7322664082738928071}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: boost_gauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 8163548385562076304}
   - component: {fileID: 839433913314360382}
   - component: {fileID: 8100062612916833854}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas_ImageBoost_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -799,7 +799,7 @@ GameObject:
   - component: {fileID: 8012058395173656138}
   - component: {fileID: 4299746994244852526}
   - component: {fileID: 5997120437085532200}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Indicator_CheckEngine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -874,7 +874,7 @@ GameObject:
   - component: {fileID: 658935262888556338}
   - component: {fileID: 6465516824437663639}
   - component: {fileID: 7529456183498580059}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text_Boost_F1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1010,7 +1010,7 @@ GameObject:
   - component: {fileID: 1707915138774439036}
   - component: {fileID: 1519806512258997714}
   - component: {fileID: 8134113166787730624}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Indicator_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1083,7 +1083,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2738839111681641724}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: speed_gauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1124,7 +1124,7 @@ GameObject:
   - component: {fileID: 621631766817004008}
   - component: {fileID: 7710556688017157079}
   - component: {fileID: 1313665954548381967}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: background_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1199,7 +1199,7 @@ GameObject:
   - component: {fileID: 6774457403254153448}
   - component: {fileID: 5730636750603358583}
   - component: {fileID: 8316988695510643266}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: speed_bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1274,7 +1274,7 @@ GameObject:
   - component: {fileID: 5601145780368045182}
   - component: {fileID: 6732828391814825839}
   - component: {fileID: 307952810774214017}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas_ImageSpeed_300
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1349,7 +1349,7 @@ GameObject:
   - component: {fileID: 1163088994327863867}
   - component: {fileID: 2923680044691660112}
   - component: {fileID: 1499822541032230396}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Indicator_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1424,7 +1424,7 @@ GameObject:
   - component: {fileID: 4127474065125523480}
   - component: {fileID: 4433565314731049078}
   - component: {fileID: 7896190580883229653}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas_ImageRpm_10000_(radial example)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1497,7 +1497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4218860221009835410}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: rpm_gauge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1540,7 +1540,7 @@ GameObject:
   - component: {fileID: 8756349766295089755}
   - component: {fileID: 8585115812801304230}
   - component: {fileID: 6208954395396478612}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas_ImageRpm_10000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1615,7 +1615,7 @@ GameObject:
   - component: {fileID: 1695721169596127567}
   - component: {fileID: 3914593716886903823}
   - component: {fileID: 7751532467344682217}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: rpm_bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1690,7 +1690,7 @@ GameObject:
   - component: {fileID: 6398973864116010061}
   - component: {fileID: 4001946827212066328}
   - component: {fileID: 1172116042901004741}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Indicator_RunningLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1765,7 +1765,7 @@ GameObject:
   - component: {fileID: 4731284081379077810}
   - component: {fileID: 8950229041077376411}
   - component: {fileID: 9064991383277193815}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Indicator_HandBrake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1840,7 +1840,7 @@ GameObject:
   - component: {fileID: 8429006645159472985}
   - component: {fileID: 3824130924618048867}
   - component: {fileID: 2518919874566929063}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text_Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1977,7 +1977,7 @@ GameObject:
   - component: {fileID: 5044253602718926456}
   - component: {fileID: 3031677677573935554}
   - component: {fileID: 4992661463240559089}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2084,7 +2084,7 @@ GameObject:
   - component: {fileID: 1167380678810952056}
   - component: {fileID: 1297701037975935055}
   - component: {fileID: 8897934109355754587}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text_Gear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2220,7 +2220,7 @@ GameObject:
   - component: {fileID: 8744867749747535708}
   - component: {fileID: 8904298427505805393}
   - component: {fileID: 3521767149151428504}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text_Clock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2356,7 +2356,7 @@ GameObject:
   - component: {fileID: 8602114641507265973}
   - component: {fileID: 1497349573580838019}
   - component: {fileID: 901493780228631665}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text_Rpm
   m_TagString: Untagged
   m_Icon: {fileID: 0}

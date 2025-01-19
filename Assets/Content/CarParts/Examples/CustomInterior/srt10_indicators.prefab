@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2532696379356127290}
   - component: {fileID: 5878460943291451629}
   - component: {fileID: 1352153768415249314}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Indicator_CheckEngine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 7768997833715266054}
   - component: {fileID: 4924796486715869663}
   - component: {fileID: 1502943167072406999}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 8429316820676880092}
   - component: {fileID: 7323121779943305360}
   - component: {fileID: 3980089087336370317}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Indicator_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 7098296982809843463}
   - component: {fileID: 4263684969110434920}
   - component: {fileID: 4806771160799805465}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Indicator_HighBeams
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 1571032581063510179}
   - component: {fileID: 1515700694675722543}
   - component: {fileID: 3289929604862752397}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Indicator_Hazard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 8993926798002689197}
   - component: {fileID: 6078090630330505034}
   - component: {fileID: 8468778058924906935}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: bg_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 5582145648547532847}
   - component: {fileID: 1453095601011097540}
   - component: {fileID: 5438227989155207091}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text_Odometer_D7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +664,7 @@ GameObject:
   - component: {fileID: 7705139925403776076}
   - component: {fileID: 7017771764557781785}
   - component: {fileID: 7958410202103109439}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Indicator_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -739,7 +739,7 @@ GameObject:
   - component: {fileID: 4695409884226774574}
   - component: {fileID: 6044714025430465479}
   - component: {fileID: 3758883115359382650}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Indicator_HandBrake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -814,7 +814,7 @@ GameObject:
   - component: {fileID: 768836579489007205}
   - component: {fileID: 1185598651316211140}
   - component: {fileID: 5205790768111136659}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Indicator_RunningLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
