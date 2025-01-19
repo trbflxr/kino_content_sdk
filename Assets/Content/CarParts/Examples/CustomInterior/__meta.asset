@@ -36,7 +36,7 @@ MonoBehaviour:
     OverrideBrakeLight: 0
   - name: srt10_interior
     Type: 21
-    Prefab: {fileID: 1500373433602594182, guid: 4a50f917f27b9e64f9cc94a683e5fec3, type: 3}
+    Prefab: {fileID: 7384154492698599485, guid: f34b877271c81fe45950d19f3b15255a, type: 3}
     Icon: {fileID: 2800000, guid: e6590b46c027a0f4a9caaf6785b55eb0, type: 3}
     FilePath: Assets/Content/CarParts/Examples/CustomInterior/srt10_interior.prefab
     ReplacementId: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
     OverrideBrakeLight: 0
   - name: srt10_interior_digital
     Type: 21
-    Prefab: {fileID: 8791166974275054603, guid: 87f1e5109f2d4a34e954f46d30a03f4e, type: 3}
+    Prefab: {fileID: 956955078652329040, guid: 1eea06aa482c5ac4d96dc82c2b768d81, type: 3}
     Icon: {fileID: 2800000, guid: 9bfae995f2c10214b8904c720d74f150, type: 3}
     FilePath: Assets/Content/CarParts/Examples/CustomInterior/srt10_interior_digital.prefab
     ReplacementId: 0
