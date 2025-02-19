@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using UnityEditor;
@@ -25,6 +26,8 @@ namespace Editor {
 
 		private Vector2 scrollPos_ = Vector2.zero;
 
+		private string searchText_ = string.Empty;
+
 		private void OnFocus() {
 			Refresh();
 		}
@@ -37,6 +40,7 @@ namespace Editor {
 			DrawAuthorMeta();
 			DrawBuilderMeta();
 
+			DrawSearchBar();
 			DrawEntries();
 
 			DrawButtons();
@@ -106,6 +110,17 @@ namespace Editor {
 			DrawHorizontalGUILine();
 		}
 
+		protected virtual void DrawSearchBar() {
+			GUILayout.BeginHorizontal();
+
+			searchText_ = GUILayout.TextField(searchText_, 16);
+			if (GUILayout.Button("Clear", GUILayout.Width(55.0f))) {
+				searchText_ = string.Empty;
+			}
+
+			GUILayout.EndHorizontal();
+		}
+
 		protected virtual void DrawEntries() {
 			GUILayout.Label("Entries:", EditorStyles.boldLabel);
 
@@ -113,6 +128,10 @@ namespace Editor {
 
 			scrollPos_ = GUILayout.BeginScrollView(scrollPos_);
 			foreach (var entry in entries_) {
+				if (!string.IsNullOrWhiteSpace(searchText_) && !entry.Name.Contains(searchText_, StringComparison.OrdinalIgnoreCase)) {
+					continue;
+				}
+
 				GUILayout.Label(entry.Name, EditorStyles.boldLabel);
 
 				DrawAdditionalEntryInfo(entry);
