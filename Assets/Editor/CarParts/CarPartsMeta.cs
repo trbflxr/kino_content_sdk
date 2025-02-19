@@ -194,13 +194,15 @@ namespace Editor {
 		[Tooltip("Pack description")]
 		public string Description = string.Empty;
 
-		[Tooltip("[Optional] Pack icon.\nIt will be displayed on the category card in the part selector in the game.")]
+		[Tooltip("[Optional] Pack icon.\n"
+		         + "It will be displayed on the category card in the part selector in the game.")]
 		public Texture2D PackIcon;
 
 		[Tooltip("Pack version")]
 		public int Version = 100;
 
-		[Tooltip("Will it be possible to dump parts using the Kino Car dumper?\nWe recommend allowing dumping since it's necessary for livery creators to access the full model")]
+		[Tooltip("Will it be possible to dump parts using the Kino Car dumper?\n"
+		         + "We recommend allowing dumping since it's necessary for livery creators to access the full model")]
 		public bool AllowPartsDump = true;
 
 		public List<PartMeta> Parts;
@@ -412,17 +414,23 @@ namespace Editor {
 
 	[CustomPropertyDrawer(typeof(PartMeta))]
 	public class PartMetaDrawer : PropertyDrawer {
-		private static readonly Dictionary<string, bool> foldoutStates_ = new();
+		private class State {
+			public bool Foldout = false;
+			public float Height = EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+		}
 
-		private float height_ = EditorGUIUtility.singleLineHeight;
+		private static readonly Dictionary<string, State> states_ = new();
+
 		private readonly float offset_ = EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
 
 		public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
-			bool foldout = GetFoldoutState(property);
-			return foldout ? height_ : EditorGUIUtility.singleLineHeight;
+			var state = GetOrAddState(property);
+			return state.Foldout ? state.Height : EditorGUIUtility.singleLineHeight;
 		}
 
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
+			const float DRAG_OFFSET = 12.0f;
+
 			EditorGUI.BeginProperty(position, label, property);
 
 			string title = "unknown";
@@ -439,13 +447,12 @@ namespace Editor {
 			}
 
 			var foldoutLabel = new GUIContent($"{partType} ({title})");
-			var foldoutRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
+			var foldoutRect = new Rect(position.x + DRAG_OFFSET, position.y, position.width, EditorGUIUtility.singleLineHeight);
 
-			bool foldout = GetFoldoutState(property);
-			foldout = EditorGUI.Foldout(foldoutRect, foldout, foldoutLabel, true);
-			SetFoldoutState(property, foldout);
+			var state = GetOrAddState(property);
+			state.Foldout = EditorGUI.Foldout(foldoutRect, state.Foldout, foldoutLabel, true);
 
-			if (foldout) {
+			if (state.Foldout) {
 				float x = position.x;
 				float y = position.y;
 				float width = position.width;
@@ -480,7 +487,7 @@ namespace Editor {
 				}
 
 				y += offset_;
-				height_ = y - position.y;
+				state.Height = y - position.y;
 			}
 
 			EditorGUI.EndProperty();
@@ -498,12 +505,13 @@ namespace Editor {
 			EditorGUI.PropertyField(rect, property);
 		}
 
-		private bool GetFoldoutState(SerializedProperty property) {
-			return foldoutStates_.GetValueOrDefault(property.propertyPath, false);
-		}
+		private State GetOrAddState(SerializedProperty property) {
+			if (!states_.TryGetValue(property.propertyPath, out var state)) {
+				state = new State();
+				states_[property.propertyPath] = state;
+			}
 
-		private void SetFoldoutState(SerializedProperty property, bool newState) {
-			foldoutStates_[property.propertyPath] = newState;
+			return state;
 		}
 	}
 }
