@@ -56,6 +56,15 @@ namespace Editor {
 		Cage = 1 << 11,
 
 		All = BumperFront | Bonnet | Spoiler | BumperRear | Doors | Roof | Mirrors | Trunk | LightsFront | LightsRear | Exhaust | Cage
+
+		// system flags below, max value have to be 25
+
+		// Interior = 1 << 26,
+		// SeatLeft = 1 << 27,
+		// SeatRight = 1 << 28,
+		// SteeringWheel = 1 << 29,
+		// Handbrake = 1 << 30,
+		// Shifter = 1 << 31,
 	}
 
 	[Serializable]
