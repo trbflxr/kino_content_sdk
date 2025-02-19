@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e40cfe666e84771b7a249caa74eb593, type: 3}
+  m_Name: __meta
+  m_EditorClassIdentifier: 
+  SelectedToBuild: 1
+  Name: srt10_body_example
+  Id: 1858154438963757056
+  Type: 3
+  TargetCarId: 99
+  CategoryName: kino
+  Description: example body kit for srt10
+  PackIcon: {fileID: 2800000, guid: c3d440a4b45f23945b31a8036c4294ca, type: 3}
+  Version: 100
+  AllowPartsDump: 1
+  Parts:
+  - Id: 67445173
+    Type: 13
+    Prefab: {fileID: 8347197031647464075, guid: e32befffbfabd5e4a99aa9f2c01941a2, type: 3}
+    Icon: {fileID: 2800000, guid: aa413472d558d5848ac9569097979c3c, type: 3}
+    ReplacementId: 0
+    SteeringWheelSize: 0.3
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    EnabledParts: 262143
+    FrontTrackWidth: 1.5
+    RearTrackWidth: 1.5
+    HeightOffset: 0
+    Name: srt10_bonnet
+    FilePath: Assets/Content/CarParts/Examples/CustomBody/srt10_bonnet.prefab
+  - Id: 67445230
+    Type: 22
+    Prefab: {fileID: 5208979798732377033, guid: b005bde4b551dc7448bee7b8f7b1dbde, type: 3}
+    Icon: {fileID: 2800000, guid: b21900cfa17deb44385edf3592655906, type: 3}
+    ReplacementId: 99008
+    SteeringWheelSize: 0.3
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    EnabledParts: -1
+    FrontTrackWidth: 1.6
+    RearTrackWidth: 1.6
+    HeightOffset: 0
+    Name: srt10_body
+    FilePath: Assets/Content/CarParts/Examples/CustomBody/srt10_body.prefab
