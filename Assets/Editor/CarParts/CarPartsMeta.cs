@@ -68,6 +68,12 @@ namespace Editor {
 	}
 
 	[Serializable]
+	public class SlotEntry {
+		public SlotType Type;
+		public int PartId = 0;
+	}
+
+	[Serializable]
 	public class PartMeta {
 		[Serializable]
 		public class Proxy {
@@ -88,11 +94,8 @@ namespace Editor {
 			public float FrontTrackWidth;
 			public float RearTrackWidth;
 			public float HeightOffset;
+			public int[] DefaultParts;
 		}
-
-		[ReadOnly]
-		[Tooltip("Part 'unique' ID")]
-		public int Id;
 
 		[Tooltip("Type of part.\n"
 		         + "Must match the type of the pack.")]
@@ -142,7 +145,12 @@ namespace Editor {
 		[Range(-1.0f, 1.0f)]
 		public float HeightOffset = 0.0f;
 
+		[Tooltip("Specify the parts that will be applied by default when selecting a bodykit")]
+		public List<SlotEntry> DefaultParts = new();
 
+		[ReadOnly]
+		[HideInInspector]
+		public int Id;
 		[HideInInspector]
 		public string Name = "unknown";
 		[HideInInspector]
@@ -263,8 +271,13 @@ namespace Editor {
 					EnabledParts = (int) part.EnabledParts,
 					FrontTrackWidth = part.FrontTrackWidth,
 					RearTrackWidth = part.RearTrackWidth,
-					HeightOffset = part.HeightOffset
+					HeightOffset = part.HeightOffset,
+					DefaultParts = new int[part.DefaultParts.Count]
 				};
+
+				for (int i = 0; i < part.DefaultParts.Count; ++i) {
+					partMeta.DefaultParts[i] = part.DefaultParts[i].PartId;
+				}
 
 				if (string.IsNullOrWhiteSpace(partMeta.FilePath)) {
 					continue;
@@ -371,6 +384,7 @@ namespace Editor {
 	public class PartPackMetaEditor : BaseMetaEditor<CarPartsMeta> {
 		private ReorderableList partsList_;
 		private SerializedProperty partsProp_;
+
 		public PartPackMetaEditor() : base(false) { }
 
 		private void OnEnable() {
@@ -426,6 +440,7 @@ namespace Editor {
 		private class State {
 			public bool Foldout = false;
 			public float Height = EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+			public bool SlotsVisible = false;
 		}
 
 		private static readonly Dictionary<string, State> states_ = new();
@@ -466,8 +481,6 @@ namespace Editor {
 				float y = position.y;
 				float width = position.width;
 
-				DrawProperty(ref x, ref y, width, property, "Id");
-
 				DrawProperty(ref x, ref y, width, typeProp);
 				DrawProperty(ref x, ref y, width, prefabProp);
 				DrawProperty(ref x, ref y, width, property, "Icon");
@@ -489,10 +502,44 @@ namespace Editor {
 				}
 
 				if (partType is PartType.Body) {
-					DrawProperty(ref x, ref y, width, property, "EnabledParts");
+					var partsProp = property.FindPropertyRelative("DefaultParts");
+
+					EditorGUI.BeginChangeCheck();
+					var enabledPartsProp = DrawProperty(ref x, ref y, width, property, "EnabledParts");
+					if (EditorGUI.EndChangeCheck()) {
+						UpdateSlots((SlotType) enabledPartsProp.intValue, partsProp);
+					}
+
 					DrawProperty(ref x, ref y, width, property, "FrontTrackWidth");
 					DrawProperty(ref x, ref y, width, property, "RearTrackWidth");
 					DrawProperty(ref x, ref y, width, property, "HeightOffset");
+
+					y += offset_;
+
+					var foldoutPartsRect = new Rect(x + DRAG_OFFSET, y, position.width, EditorGUIUtility.singleLineHeight);
+					state.SlotsVisible = EditorGUI.Foldout(foldoutPartsRect, state.SlotsVisible, new GUIContent("Default parts"), true);
+					if (state.SlotsVisible) {
+						for (int i = 0; i < partsProp.arraySize; ++i) {
+							var slotProp = partsProp.GetArrayElementAtIndex(i);
+							if (slotProp == null) {
+								continue;
+							}
+
+							var slotTypeProp = slotProp.FindPropertyRelative("Type");
+							var slotIdProp = slotProp.FindPropertyRelative("PartId");
+
+							var slotType = (SlotType) slotTypeProp.intValue;
+							if (slotType == SlotType.All) {
+								continue;
+							}
+
+							float slotWidth = position.width - DRAG_OFFSET;
+							var slotLabel = new GUIContent(slotType.ToString());
+
+							y += offset_;
+							EditorGUI.PropertyField(new Rect(x + DRAG_OFFSET, y, slotWidth, EditorGUIUtility.singleLineHeight), slotIdProp, slotLabel);
+						}
+					}
 				}
 
 				y += offset_;
@@ -502,16 +549,18 @@ namespace Editor {
 			EditorGUI.EndProperty();
 		}
 
-		void DrawProperty(ref float x, ref float y, float width, SerializedProperty property, string propName) {
+		SerializedProperty DrawProperty(ref float x, ref float y, float width, SerializedProperty property, string propName) {
 			var prop = property.FindPropertyRelative(propName);
-			DrawProperty(ref x, ref y, width, prop);
+			return DrawProperty(ref x, ref y, width, prop);
 		}
 
-		void DrawProperty(ref float x, ref float y, float width, SerializedProperty property) {
+		SerializedProperty DrawProperty(ref float x, ref float y, float width, SerializedProperty property) {
 			y += offset_;
 
 			var rect = new Rect(x, y, width, EditorGUIUtility.singleLineHeight);
-			EditorGUI.PropertyField(rect, property);
+			EditorGUI.PropertyField(rect, property, true);
+
+			return property;
 		}
 
 		private State GetOrAddState(SerializedProperty property) {
@@ -521,6 +570,46 @@ namespace Editor {
 			}
 
 			return state;
+		}
+
+		private void UpdateSlots(SlotType slots, SerializedProperty slotsProperty) {
+			var toAdd = slots;
+			var toRemove = new List<int>();
+
+			for (int i = 0; i < slotsProperty.arraySize; ++i) {
+				var slotProp = slotsProperty.GetArrayElementAtIndex(i);
+				if (slotProp == null) {
+					continue;
+				}
+
+				var slotTypeProp = slotProp.FindPropertyRelative("Type");
+				var slotType = (SlotType) slotTypeProp.intValue;
+
+				if (slots.HasFlag(slotType)) {
+					toAdd &= ~slotType;
+				}
+				else {
+					toRemove.Add(i);
+				}
+			}
+
+			int deleteOffset = 0;
+			foreach (var index in toRemove) {
+				slotsProperty.DeleteArrayElementAtIndex(index - deleteOffset++);
+			}
+
+			foreach (SlotType st in Enum.GetValues(typeof(SlotType))) {
+				if (st is SlotType.All) {
+					continue;
+				}
+
+				if (toAdd.HasFlag(st)) {
+					slotsProperty.InsertArrayElementAtIndex(slotsProperty.arraySize);
+
+					var newElement = slotsProperty.GetArrayElementAtIndex(slotsProperty.arraySize - 1);
+					newElement.FindPropertyRelative("Type").intValue = (int) st;
+				}
+			}
 		}
 	}
 }

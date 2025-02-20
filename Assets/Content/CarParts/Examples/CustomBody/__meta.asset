@@ -23,11 +23,10 @@ MonoBehaviour:
   Version: 100
   AllowPartsDump: 1
   Parts:
-  - Id: 67445173
-    Type: 13
+  - Type: 13
     Prefab: {fileID: 8347197031647464075, guid: e32befffbfabd5e4a99aa9f2c01941a2, type: 3}
     Icon: {fileID: 2800000, guid: aa413472d558d5848ac9569097979c3c, type: 3}
-    ReplacementId: 0
+    ReplacementId: 99027
     SteeringWheelSize: 0.3
     OverrideTurnSignals: 0
     OverrideHeadlightsMask: 0
@@ -36,10 +35,11 @@ MonoBehaviour:
     FrontTrackWidth: 1.5
     RearTrackWidth: 1.5
     HeightOffset: 0
+    DefaultParts: []
+    Id: 67445173
     Name: srt10_bonnet
     FilePath: Assets/Content/CarParts/Examples/CustomBody/srt10_bonnet.prefab
-  - Id: 67445230
-    Type: 22
+  - Type: 22
     Prefab: {fileID: 5208979798732377033, guid: b005bde4b551dc7448bee7b8f7b1dbde, type: 3}
     Icon: {fileID: 2800000, guid: b21900cfa17deb44385edf3592655906, type: 3}
     ReplacementId: 99008
@@ -51,5 +51,31 @@ MonoBehaviour:
     FrontTrackWidth: 1.6
     RearTrackWidth: 1.6
     HeightOffset: 0
+    DefaultParts:
+    - Type: 2
+      PartId: 1453532563
+    - Type: 4
+      PartId: 99084
+    - Type: 8
+      PartId: 99039
+    - Type: 16
+      PartId: 99051
+    - Type: 32
+      PartId: 99066
+    - Type: 64
+      PartId: 99134
+    - Type: 128
+      PartId: 99079
+    - Type: 256
+      PartId: 99057
+    - Type: 512
+      PartId: 99059
+    - Type: 1024
+      PartId: 99054
+    - Type: 2048
+      PartId: 99043
+    - Type: 1
+      PartId: 99028
+    Id: 67445230
     Name: srt10_body
     FilePath: Assets/Content/CarParts/Examples/CustomBody/srt10_body.prefab
