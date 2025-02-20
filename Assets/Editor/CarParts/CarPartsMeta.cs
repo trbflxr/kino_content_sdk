@@ -608,6 +608,7 @@ namespace Editor {
 
 					var newElement = slotsProperty.GetArrayElementAtIndex(slotsProperty.arraySize - 1);
 					newElement.FindPropertyRelative("Type").intValue = (int) st;
+					newElement.FindPropertyRelative("PartId").intValue = 0;
 				}
 			}
 		}
