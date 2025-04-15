@@ -34,6 +34,8 @@ MonoBehaviour:
     EnabledParts: 262143
     FrontTrackWidth: 1.5
     RearTrackWidth: 1.5
+    FrontBaseZ: 0
+    RearBaseZ: 0
     HeightOffset: 0
     DefaultParts: []
     Id: 67445173
@@ -50,6 +52,8 @@ MonoBehaviour:
     EnabledParts: -1
     FrontTrackWidth: 1.6
     RearTrackWidth: 1.6
+    FrontBaseZ: 0
+    RearBaseZ: 0
     HeightOffset: 0
     DefaultParts:
     - Type: 2

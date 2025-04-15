@@ -93,6 +93,8 @@ namespace Editor {
 			public int EnabledParts;
 			public float FrontTrackWidth;
 			public float RearTrackWidth;
+			public float FrontBaseZ;
+			public float RearBaseZ;
 			public float HeightOffset;
 			public int[] DefaultParts;
 		}
@@ -141,6 +143,12 @@ namespace Editor {
 
 		[Range(0.1f, 2.5f)]
 		public float RearTrackWidth = 1.5f;
+
+		[Range(-1.0f, 1.0f)]
+		public float FrontBaseZ = 0.0f;
+
+		[Range(-1.0f, 1.0f)]
+		public float RearBaseZ = 0.0f;
 
 		[Range(-1.0f, 1.0f)]
 		public float HeightOffset = 0.0f;
@@ -271,6 +279,8 @@ namespace Editor {
 					EnabledParts = (int) part.EnabledParts,
 					FrontTrackWidth = part.FrontTrackWidth,
 					RearTrackWidth = part.RearTrackWidth,
+					FrontBaseZ = part.FrontBaseZ,
+					RearBaseZ = part.RearBaseZ,
 					HeightOffset = part.HeightOffset,
 					DefaultParts = new int[part.DefaultParts.Count]
 				};
@@ -512,6 +522,8 @@ namespace Editor {
 
 					DrawProperty(ref x, ref y, width, property, "FrontTrackWidth");
 					DrawProperty(ref x, ref y, width, property, "RearTrackWidth");
+					DrawProperty(ref x, ref y, width, property, "FrontBaseZ");
+					DrawProperty(ref x, ref y, width, property, "RearBaseZ");
 					DrawProperty(ref x, ref y, width, property, "HeightOffset");
 
 					y += offset_;
