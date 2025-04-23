@@ -37,7 +37,7 @@ namespace Editor {
 		LightsFront,
 		LightsRear,
 		Interior,
-		Body
+		Chassis
 	}
 
 	[Flags]
