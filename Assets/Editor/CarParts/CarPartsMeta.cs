@@ -511,7 +511,7 @@ namespace Editor {
 					DrawProperty(ref x, ref y, width, property, "OverrideBrakeLight");
 				}
 
-				if (partType is PartType.Body) {
+				if (partType is PartType.Chassis) {
 					var partsProp = property.FindPropertyRelative("DefaultParts");
 
 					EditorGUI.BeginChangeCheck();
