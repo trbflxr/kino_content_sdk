@@ -90,6 +90,7 @@ namespace Editor {
 			public bool OverrideTurnSignals;
 			public bool OverrideBrakeLight;
 
+			public string CarNameOverride;
 			public int EnabledParts;
 			public float FrontTrackWidth;
 			public float RearTrackWidth;
@@ -134,6 +135,9 @@ namespace Editor {
 		[Tooltip("Set to TRUE if you want to hide the default brake light source from CarX.")]
 		public bool OverrideBrakeLight;
 
+
+		[Tooltip("[Optional] Specify the car name to be displayed")]
+		public string CarNameOverride = string.Empty;
 
 		[Tooltip("Specify which parts can be installed on the bodykit")]
 		public SlotType EnabledParts = SlotType.All;
@@ -276,6 +280,7 @@ namespace Editor {
 					OverrideTurnSignals = part.OverrideTurnSignals,
 					OverrideBrakeLight = part.OverrideBrakeLight,
 
+					CarNameOverride = part.CarNameOverride,
 					EnabledParts = (int) part.EnabledParts,
 					FrontTrackWidth = part.FrontTrackWidth,
 					RearTrackWidth = part.RearTrackWidth,
@@ -512,6 +517,8 @@ namespace Editor {
 				}
 
 				if (partType is PartType.Chassis) {
+					DrawProperty(ref x, ref y, width, property, "CarNameOverride");
+
 					var partsProp = property.FindPropertyRelative("DefaultParts");
 
 					EditorGUI.BeginChangeCheck();

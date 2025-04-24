@@ -31,6 +31,7 @@ MonoBehaviour:
     OverrideTurnSignals: 0
     OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
+    CarNameOverride: 
     EnabledParts: 262143
     FrontTrackWidth: 1.5
     RearTrackWidth: 1.5
@@ -40,7 +41,7 @@ MonoBehaviour:
     DefaultParts: []
     Id: 67445173
     Name: srt10_bonnet
-    FilePath: Assets/Content/CarParts/Examples/CustomBody/srt10_bonnet.prefab
+    FilePath: Assets/Content/CarParts/Examples/CustomChassis/srt10_bonnet.prefab
   - Type: 22
     Prefab: {fileID: 5208979798732377033, guid: b005bde4b551dc7448bee7b8f7b1dbde, type: 3}
     Icon: {fileID: 2800000, guid: b21900cfa17deb44385edf3592655906, type: 3}
@@ -49,6 +50,7 @@ MonoBehaviour:
     OverrideTurnSignals: 0
     OverrideHeadlightsMask: 0
     OverrideBrakeLight: 0
+    CarNameOverride: Dodge Viper SRT-10
     EnabledParts: -1
     FrontTrackWidth: 1.6
     RearTrackWidth: 1.6
@@ -82,4 +84,4 @@ MonoBehaviour:
       PartId: 99028
     Id: 67445230
     Name: srt10_body
-    FilePath: Assets/Content/CarParts/Examples/CustomBody/srt10_body.prefab
+    FilePath: Assets/Content/CarParts/Examples/CustomChassis/srt10_body.prefab
