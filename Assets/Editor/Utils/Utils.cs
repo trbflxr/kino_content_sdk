@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using UnityEditor;
+using UnityEngine;
 using Debug = UnityEngine.Debug;
 using Object = UnityEngine.Object;
 
@@ -57,6 +58,24 @@ namespace Editor {
 			catch {
 				Debug.LogError($"Kino: Unable to open URL {url}");
 			}
+		}
+
+		public static string GetPath(this GameObject obj) {
+			const string SEPARATOR = "/";
+
+			if (!obj) {
+				return string.Empty;
+			}
+
+			string path = SEPARATOR + obj.name;
+			var current = obj.transform;
+
+			while (current.parent) {
+				current = current.parent;
+				path = SEPARATOR + current.name + path;
+			}
+
+			return path;
 		}
 	}
 }

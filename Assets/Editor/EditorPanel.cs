@@ -22,5 +22,10 @@ namespace Editor {
 		public static void OpenMapsWindow() {
 			GetWindow(typeof(MapsTool));
 		}
+
+		[MenuItem("Kino/Garage tool", false, 4)]
+		public static void OpenGarageBuilderWindow() {
+			GetWindow(typeof(GarageTool));
+		}
 	}
 }

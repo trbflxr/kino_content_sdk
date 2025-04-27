@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46c72292bf454251892ffce7e66d8096, type: 3}
+  m_Name: __garage_meta
+  m_EditorClassIdentifier: 
+  SelectedToBuild: 1
+  Name: garage_example
+  Id: 6633997297728356352
+  Scene: {fileID: 102900000, guid: f3915cd9fcc7e2b45bf34186c14c7827, type: 3}
+  Version: 100
+  ScenePath: Assets/Content/Garage/Example/garage_scene.unity

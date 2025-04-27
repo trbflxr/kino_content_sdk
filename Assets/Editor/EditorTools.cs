@@ -12,6 +12,7 @@ namespace Editor {
 	public class StickerPacksTool : BaseEditorTool<StickerPacksBuilderMeta, StickerPackMeta, StickerPacksBuilder> { }
 	public class CustomObjectsTool : BaseEditorTool<CustomObjectsBuilderMeta, CustomObjectsMeta, CustomObjectsBuilder> { }
 	public class MapsTool : BaseEditorTool<MapsBuilderMeta, MapMeta, MapsBuilder> { }
+	public class GarageTool : BaseEditorTool<GarageBuilderMeta, GarageMeta, GarageBuilder> { }
 
 	public abstract class BaseEditorTool<T, V, B> : EditorWindow where T : BaseBuilderMeta<T> where V : BaseEntryMeta<V> where B : BaseBuilder<T, V>, new() {
 		protected const float OFFSET = 5.0f;
