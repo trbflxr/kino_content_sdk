@@ -54,8 +54,9 @@ namespace Editor {
 		LightsRear = 1 << 9,
 		Exhaust = 1 << 10,
 		Cage = 1 << 11,
+		Skirts = 1 << 12,
 
-		All = BumperFront | Bonnet | Spoiler | BumperRear | Doors | Roof | Mirrors | Trunk | LightsFront | LightsRear | Exhaust | Cage
+		All = BumperFront | Bonnet | Spoiler | BumperRear | Doors | Roof | Mirrors | Trunk | LightsFront | LightsRear | Exhaust | Cage | Skirts
 
 		// system flags below, max value have to be 25
 
