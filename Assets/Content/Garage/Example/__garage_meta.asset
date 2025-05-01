@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SelectedToBuild: 1
   Name: garage_example
-  Id: 6633997297728356352
-  Scene: {fileID: 102900000, guid: f3915cd9fcc7e2b45bf34186c14c7827, type: 3}
+  Id: 11456292967153664
   Version: 100
-  ScenePath: Assets/Content/Garage/Example/garage_scene.unity
+  Scene: {fileID: 102900000, guid: f3915cd9fcc7e2b45bf34186c14c7827, type: 3}
