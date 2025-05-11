@@ -1,7 +1,9 @@
 ﻿using System;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 namespace Editor {
 	[CreateAssetMenu(fileName = "__garage_meta", menuName = "Kino/Create Garage meta", order = 5)]
@@ -34,6 +36,40 @@ namespace Editor {
 
 			if (!Scene) {
 				Debug.LogError($"Kino: Garage scene for '{Name}' is not set");
+				return false;
+			}
+
+			string scenePath = AssetDatabase.GetAssetPath(Scene);
+
+			var sceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>(scenePath);
+			if (!sceneAsset) {
+				Debug.LogError($"Kino: Garage scene not found at path: '{scenePath}'");
+				return false;
+			}
+
+			var currentScene = SceneManager.GetActiveScene();
+			string currentScenePath = currentScene.path;
+
+			var garageScene = EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Additive);
+
+			string cameraContainerName = string.Empty;
+
+			var roots = garageScene.GetRootGameObjects();
+			foreach (var root in roots) {
+				if (root.GetComponentInChildren<Camera>(true)) {
+					cameraContainerName = root.name;
+					break;
+				}
+			}
+
+			EditorSceneManager.CloseScene(garageScene, true);
+
+			if (!string.IsNullOrEmpty(currentScenePath)) {
+				EditorSceneManager.OpenScene(currentScenePath, OpenSceneMode.Single);
+			}
+
+			if (!string.IsNullOrWhiteSpace(cameraContainerName)) {
+				Debug.LogError($"Kino: The garage scene contains a camera at: '{cameraContainerName}', delete it before starting the build");
 				return false;
 			}
 

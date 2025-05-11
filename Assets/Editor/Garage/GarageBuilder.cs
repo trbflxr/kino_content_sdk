@@ -55,28 +55,28 @@ namespace Editor {
 				return false;
 			}
 
-			foreach (var map in entries) {
-				if (!map.SelectedToBuild) {
+			foreach (var garageEntry in entries) {
+				if (!garageEntry.SelectedToBuild) {
 					continue;
 				}
 
-				if (string.IsNullOrWhiteSpace(map.Name)) {
+				if (string.IsNullOrWhiteSpace(garageEntry.Name)) {
 					error = "One of selected to build garages has empty name";
 					return false;
 				}
 
 				var regex = new Regex("^[A-Za-z0-9_\\-]+$");
-				if (!regex.IsMatch(map.Name)) {
+				if (!regex.IsMatch(garageEntry.Name)) {
 					error = "Garage name contains not allowed characters. Allowed characters: [A-Z,a-z,0-9,-,_]";
 					return false;
 				}
 
-				if (map.Version <= 0) {
-					error = $"Invalid pack version: {map.Name} -> {map.Version}";
+				if (garageEntry.Version <= 0) {
+					error = $"Invalid pack version: {garageEntry.Name} -> {garageEntry.Version}";
 					return false;
 				}
 
-				if (!map.Validate()) {
+				if (!garageEntry.Validate()) {
 					error = "See warnings above";
 					return false;
 				}
