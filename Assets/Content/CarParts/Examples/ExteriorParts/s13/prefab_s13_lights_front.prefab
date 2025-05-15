@@ -2229,7 +2229,7 @@ GameObject:
   - component: {fileID: 1910230045039095738}
   - component: {fileID: 7854184271111194004}
   m_Layer: 0
-  m_Name: emissive_right
+  m_Name: emissive_combined
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
