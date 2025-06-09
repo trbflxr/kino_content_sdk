@@ -182,6 +182,56 @@ namespace Editor {
 				Id = Utils.GetId();
 			}
 		}
+
+		public bool ValidateHierarchy(IReadOnlyCollection<string> forbiddenNames) {
+			if (string.IsNullOrWhiteSpace(FilePath)) {
+				return false;
+			}
+
+			var partObject = PrefabUtility.LoadPrefabContents(FilePath);
+			if (!partObject) {
+				Debug.LogError($"Kino: Unable to load prefab {FilePath}");
+				return false;
+			}
+
+			bool CheckObject(Transform transform, ref string lastName) {
+				if (!transform || string.IsNullOrWhiteSpace(transform.name)) {
+					return true;
+				}
+
+				foreach (var forbiddenName in forbiddenNames) {
+					if (transform.name.StartsWith(forbiddenName, StringComparison.OrdinalIgnoreCase)) {
+						lastName = transform.name;
+						return false;
+					}
+				}
+
+				foreach (Transform child in transform) {
+					if (!CheckObject(child, ref lastName)) {
+						return false;
+					}
+				}
+
+				return true;
+			}
+
+			try {
+				string lastName = "unknown";
+				if (!CheckObject(partObject.transform, ref lastName)) {
+					Debug.LogError($"Kino: Forbidden prefab child name '{lastName}', prefab: {Name}");
+					return false;
+				}
+
+				return true;
+			}
+			catch (Exception e) {
+				Debug.LogError($"Kino: An error occurred while validating hierarchy of {FilePath}, e: {e}");
+				return false;
+			}
+			finally {
+				PrefabUtility.UnloadPrefabContents(partObject);
+			}
+		}
 	}
 
 	[CreateAssetMenu(fileName = "__meta", menuName = "Kino/Create car parts pack meta", order = 1)]
@@ -238,6 +288,8 @@ namespace Editor {
 		public List<PartMeta> Parts;
 
 		private bool valid_;
+
+		private readonly HashSet<string> forbiddenNames_ = new();
 
 		public Proxy GetProxyMeta() {
 			var meta = new Proxy {
@@ -317,6 +369,29 @@ namespace Editor {
 			Debug.Log($"Kino: Validating parts list {Name} ({Type})");
 
 			OnValidate();
+
+			forbiddenNames_.Clear();
+			var partTypes = Enum.GetValues(typeof(PartType));
+			foreach (object pt in partTypes) {
+				if (pt is PartType.Undefined or PartType.Wheel or PartType.Interior) {
+					continue;
+				}
+
+				string strType = pt.ToString();
+				if (pt is PartType.ShifterSequential or PartType.ShifterHPattern) {
+					strType = "Shifter";
+				}
+
+				forbiddenNames_.Add($"{strType}_root");
+			}
+
+			foreach (var part in Parts) {
+				if (!part.ValidateHierarchy(forbiddenNames_)) {
+					Debug.LogWarning($"Kino: The hierarchy of part prefab {part.Name} ({part.Id} | {part.Type}) is incorrect, see errors above");
+					valid_ = false;
+					break;
+				}
+			}
 
 			return valid_;
 		}
