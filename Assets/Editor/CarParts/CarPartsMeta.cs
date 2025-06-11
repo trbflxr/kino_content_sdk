@@ -290,6 +290,7 @@ namespace Editor {
 		private bool valid_;
 
 		private readonly HashSet<string> forbiddenNames_ = new();
+		private readonly HashSet<string> forbiddenInteriorNames_ = new();
 
 		public Proxy GetProxyMeta() {
 			var meta = new Proxy {
@@ -371,6 +372,7 @@ namespace Editor {
 			OnValidate();
 
 			forbiddenNames_.Clear();
+			forbiddenInteriorNames_.Clear();
 			var partTypes = Enum.GetValues(typeof(PartType));
 			foreach (object pt in partTypes) {
 				if (pt is PartType.Undefined or PartType.Wheel or PartType.Interior) {
@@ -383,10 +385,19 @@ namespace Editor {
 				}
 
 				forbiddenNames_.Add($"{strType}_root");
+
+				if (pt is not PartType.SteeringWheel
+				    and not PartType.Handbrake
+				    and not PartType.ShifterSequential
+				    and not PartType.ShifterHPattern
+				    and not PartType.SeatLeft
+				    and not PartType.SeatRight) {
+					forbiddenInteriorNames_.Add(strType);
+				}
 			}
 
 			foreach (var part in Parts) {
-				if (!part.ValidateHierarchy(forbiddenNames_)) {
+				if (!part.ValidateHierarchy(part.Type == PartType.Interior ? forbiddenInteriorNames_ : forbiddenNames_)) {
 					Debug.LogWarning($"Kino: The hierarchy of part prefab {part.Name} ({part.Id} | {part.Type}) is incorrect, see errors above");
 					valid_ = false;
 					break;
