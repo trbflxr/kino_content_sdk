@@ -384,7 +384,9 @@ namespace Editor {
 					strType = "Shifter";
 				}
 
-				forbiddenNames_.Add($"{strType}_root");
+				strType = $"{strType}_root";
+
+				forbiddenNames_.Add(strType);
 
 				if (pt is not PartType.SteeringWheel
 				    and not PartType.Handbrake
