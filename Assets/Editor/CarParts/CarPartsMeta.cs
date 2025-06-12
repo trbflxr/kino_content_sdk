@@ -375,7 +375,7 @@ namespace Editor {
 			forbiddenInteriorNames_.Clear();
 			var partTypes = Enum.GetValues(typeof(PartType));
 			foreach (object pt in partTypes) {
-				if (pt is PartType.Undefined or PartType.Wheel or PartType.Interior) {
+				if (pt is PartType.Undefined or PartType.Wheel or PartType.Interior or PartType.Exhaust) {
 					continue;
 				}
 
