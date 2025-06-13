@@ -1,0 +1,205 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e40cfe666e84771b7a249caa74eb593, type: 3}
+  m_Name: __meta
+  m_EditorClassIdentifier: 
+  SelectedToBuild: 0
+  Name: kino_brakes
+  Id: 3481538317730709504
+  Type: 4
+  TargetCarId: -1
+  CategoryName: kino
+  Description: test kino brakes pack
+  PackIcon: {fileID: 2800000, guid: 30b6673176a143d43bf3b76dadae6c27, type: 3}
+  Version: 100
+  AllowPartsDump: 1
+  Parts:
+  - Type: 23
+    Prefab: {fileID: 1811628160987203309, guid: 13831567883436f42b3bcf7fdd69c4d0, type: 3}
+    Icon: {fileID: 2800000, guid: 30b6673176a143d43bf3b76dadae6c27, type: 3}
+    ReplacementId: 0
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    CarNameOverride: 
+    EnabledParts: 0
+    FrontTrackWidth: 0
+    RearTrackWidth: 0
+    FrontBaseZ: 0
+    RearBaseZ: 0
+    HeightOffset: 0
+    DefaultParts: []
+    RotorType: 3
+    Id: 76526684
+    Name: rotor_carbon
+    FilePath: Assets/Content/CarParts/Examples/Brakes/rotor_carbon.prefab
+  - Type: 23
+    Prefab: {fileID: 8953055543031645475, guid: ab9cf94facfc45c44a9a83d51226768d, type: 3}
+    Icon: {fileID: 2800000, guid: 30b6673176a143d43bf3b76dadae6c27, type: 3}
+    ReplacementId: 0
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    CarNameOverride: 
+    EnabledParts: 0
+    FrontTrackWidth: 0
+    RearTrackWidth: 0
+    FrontBaseZ: 0
+    RearBaseZ: 0
+    HeightOffset: 0
+    DefaultParts: []
+    RotorType: 2
+    Id: 76528113
+    Name: rotor_cast_solid
+    FilePath: Assets/Content/CarParts/Examples/Brakes/rotor_cast_solid.prefab
+  - Type: 23
+    Prefab: {fileID: 2452099860005123273, guid: 5936eca200d6b9f449264fd22d2e26bd, type: 3}
+    Icon: {fileID: 2800000, guid: 30b6673176a143d43bf3b76dadae6c27, type: 3}
+    ReplacementId: 0
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    CarNameOverride: 
+    EnabledParts: 0
+    FrontTrackWidth: 0
+    RearTrackWidth: 0
+    FrontBaseZ: 0
+    RearBaseZ: 0
+    HeightOffset: 0
+    DefaultParts: []
+    RotorType: 1
+    Id: 76528123
+    Name: rotor_cast_vented
+    FilePath: Assets/Content/CarParts/Examples/Brakes/rotor_cast_vented.prefab
+  - Type: 23
+    Prefab: {fileID: 4402743882406632604, guid: a4b737d4f9c626e4fae21462d84fbc7b, type: 3}
+    Icon: {fileID: 2800000, guid: 30b6673176a143d43bf3b76dadae6c27, type: 3}
+    ReplacementId: 0
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    CarNameOverride: 
+    EnabledParts: 0
+    FrontTrackWidth: 0
+    RearTrackWidth: 0
+    FrontBaseZ: 0
+    RearBaseZ: 0
+    HeightOffset: 0
+    DefaultParts: []
+    RotorType: 0
+    Id: 76528130
+    Name: rotor_cast_perforated
+    FilePath: Assets/Content/CarParts/Examples/Brakes/rotor_cast_perforated.prefab
+  - Type: 24
+    Prefab: {fileID: 3251616881228655581, guid: 875f1aaced57b8a4380b289e63821b3f, type: 3}
+    Icon: {fileID: 2800000, guid: 30b6673176a143d43bf3b76dadae6c27, type: 3}
+    ReplacementId: 0
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    CarNameOverride: 
+    EnabledParts: 0
+    FrontTrackWidth: 0
+    RearTrackWidth: 0
+    FrontBaseZ: 0
+    RearBaseZ: 0
+    HeightOffset: 0
+    DefaultParts: []
+    RotorType: 0
+    Id: 76528142
+    Name: caliper_4p_v1
+    FilePath: Assets/Content/CarParts/Examples/Brakes/caliper_4p_v1.prefab
+  - Type: 24
+    Prefab: {fileID: 42353047371468797, guid: c6fc70858d7a0e146b3e2552ad3507d3, type: 3}
+    Icon: {fileID: 2800000, guid: 30b6673176a143d43bf3b76dadae6c27, type: 3}
+    ReplacementId: 0
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    CarNameOverride: 
+    EnabledParts: 0
+    FrontTrackWidth: 0
+    RearTrackWidth: 0
+    FrontBaseZ: 0
+    RearBaseZ: 0
+    HeightOffset: 0
+    DefaultParts: []
+    RotorType: 0
+    Id: 76528153
+    Name: caliper_4p_v2
+    FilePath: Assets/Content/CarParts/Examples/Brakes/caliper_4p_v2.prefab
+  - Type: 24
+    Prefab: {fileID: 8290075701391356355, guid: 0dde51de60c2ce744bcb04574f77d857, type: 3}
+    Icon: {fileID: 2800000, guid: 30b6673176a143d43bf3b76dadae6c27, type: 3}
+    ReplacementId: 0
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    CarNameOverride: 
+    EnabledParts: 0
+    FrontTrackWidth: 0
+    RearTrackWidth: 0
+    FrontBaseZ: 0
+    RearBaseZ: 0
+    HeightOffset: 0
+    DefaultParts: []
+    RotorType: 0
+    Id: 76528159
+    Name: caliper_bracket_v1
+    FilePath: Assets/Content/CarParts/Examples/Brakes/caliper_bracket_v1.prefab
+  - Type: 24
+    Prefab: {fileID: 7742930989987558617, guid: a8c98bfad217be34b8646bc45b13b25f, type: 3}
+    Icon: {fileID: 2800000, guid: 30b6673176a143d43bf3b76dadae6c27, type: 3}
+    ReplacementId: 0
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    CarNameOverride: 
+    EnabledParts: 0
+    FrontTrackWidth: 0
+    RearTrackWidth: 0
+    FrontBaseZ: 0
+    RearBaseZ: 0
+    HeightOffset: 0
+    DefaultParts: []
+    RotorType: 0
+    Id: 76528165
+    Name: caliper_bracket_v2
+    FilePath: Assets/Content/CarParts/Examples/Brakes/caliper_bracket_v2.prefab
+  - Type: 24
+    Prefab: {fileID: 5928313699429139664, guid: 7708c9641b2e1de4c9e1109343f0f58b, type: 3}
+    Icon: {fileID: 2800000, guid: 30b6673176a143d43bf3b76dadae6c27, type: 3}
+    ReplacementId: 0
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    CarNameOverride: 
+    EnabledParts: 0
+    FrontTrackWidth: 0
+    RearTrackWidth: 0
+    FrontBaseZ: 0
+    RearBaseZ: 0
+    HeightOffset: 0
+    DefaultParts: []
+    RotorType: 0
+    Id: 76528301
+    Name: caliper_dual
+    FilePath: Assets/Content/CarParts/Examples/Brakes/caliper_dual.prefab

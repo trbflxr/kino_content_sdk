@@ -11,7 +11,9 @@ namespace Editor {
 		Undefined = 0,
 		Wheels,
 		UniversalInteriorParts,
-		CarParts
+		CarParts,
+		Brakes,
+		Tires
 	}
 
 	public enum PartType {
@@ -37,7 +39,12 @@ namespace Editor {
 		LightsFront,
 		LightsRear,
 		Interior,
-		Chassis
+		Chassis,
+
+		BrakeRotor,
+		BrakeCaliper,
+
+		Tire,
 	}
 
 	[Flags]
@@ -66,6 +73,13 @@ namespace Editor {
 		// SteeringWheel = 1 << 29,
 		// Handbrake = 1 << 30,
 		// Shifter = 1 << 31,
+	}
+
+	public enum RotorType {
+		CastIronPerforated = 0,
+		CastIronVented,
+		CastIronSolid,
+		CarbonCeramic
 	}
 
 	[Serializable]
@@ -99,6 +113,8 @@ namespace Editor {
 			public float RearBaseZ;
 			public float HeightOffset;
 			public int[] DefaultParts;
+
+			public int RotorType;
 		}
 
 		[Tooltip("Type of part.\n"
@@ -160,6 +176,8 @@ namespace Editor {
 
 		[Tooltip("Specify the parts that will be applied by default when selecting a bodykit")]
 		public List<SlotEntry> DefaultParts = new();
+
+		public RotorType RotorType = RotorType.CastIronPerforated;
 
 		[ReadOnly]
 		[HideInInspector]
@@ -341,7 +359,9 @@ namespace Editor {
 					FrontBaseZ = part.FrontBaseZ,
 					RearBaseZ = part.RearBaseZ,
 					HeightOffset = part.HeightOffset,
-					DefaultParts = new int[part.DefaultParts.Count]
+					DefaultParts = new int[part.DefaultParts.Count],
+
+					RotorType = (int) part.RotorType
 				};
 
 				for (int i = 0; i < part.DefaultParts.Count; ++i) {
@@ -448,10 +468,13 @@ namespace Editor {
 				bool isWheel = part.Type == PartType.Wheel;
 				bool isInterior = IsInteriorPart(part.Type);
 				bool isExterior = IsExteriorPart(part.Type);
+				bool isBrake = IsBrakePart(part.Type);
 
 				if ((Type == PackType.Wheels && !isWheel)
 				    || (Type == PackType.UniversalInteriorParts && !isInterior)
-				    || (Type == PackType.CarParts && !isExterior)) {
+				    || (Type == PackType.CarParts && !isExterior)
+				    || (Type is PackType.Brakes && !isBrake)
+				    || (Type is PackType.Tires && part.Type != PartType.Tire)) {
 					Debug.LogWarning($"Kino: Part {part.Name} ({part.Type}) is incompatible with pack {Name} ({Type}), because of type difference");
 					valid_ = false;
 				}
@@ -464,7 +487,7 @@ namespace Editor {
 		}
 
 		private bool IsExteriorPart(PartType type) {
-			return type != PartType.Wheel && !IsInteriorPart(type);
+			return type != PartType.Wheel && !IsInteriorPart(type) && !IsBrakePart(type) && type != PartType.Tire;
 		}
 
 		private bool IsInteriorPart(PartType type) {
@@ -479,6 +502,13 @@ namespace Editor {
 			}
 
 			return false;
+		}
+
+		private bool IsBrakePart(PartType type) {
+			return type switch {
+				PartType.BrakeRotor or PartType.BrakeCaliper => true,
+				_ => false
+			};
 		}
 	}
 
@@ -583,10 +613,16 @@ namespace Editor {
 				float y = position.y;
 				float width = position.width;
 
+				bool isBrake = partType is PartType.BrakeRotor or PartType.BrakeCaliper;
+				bool isTire = partType is PartType.Tire;
+
 				DrawProperty(ref x, ref y, width, typeProp);
 				DrawProperty(ref x, ref y, width, prefabProp);
 				DrawProperty(ref x, ref y, width, property, "Icon");
-				DrawProperty(ref x, ref y, width, property, "ReplacementId");
+
+				if (!isBrake && !isTire) {
+					DrawProperty(ref x, ref y, width, property, "ReplacementId");
+				}
 
 				if (partType is PartType.SteeringWheel) {
 					DrawProperty(ref x, ref y, width, property, "SteeringWheelSize");
@@ -646,6 +682,10 @@ namespace Editor {
 							EditorGUI.PropertyField(new Rect(x + DRAG_OFFSET, y, slotWidth, EditorGUIUtility.singleLineHeight), slotIdProp, slotLabel);
 						}
 					}
+				}
+
+				if (partType is PartType.BrakeRotor) {
+					DrawProperty(ref x, ref y, width, property, "RotorType");
 				}
 
 				y += offset_;
