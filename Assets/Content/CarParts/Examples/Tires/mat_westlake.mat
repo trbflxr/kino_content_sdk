@@ -205,6 +205,7 @@ Material:
     - _DetailSmoothnessScale: 1
     - _DiffusionProfile: 0
     - _DiffusionProfileHash: 0
+    - _DirtAccumulationScale: 1
     - _DirtIntensity: 1
     - _DirtIntensitySides: 1
     - _DirtIntensityThreads: 1
