@@ -1058,7 +1058,7 @@
     "m_Guid": {
         "m_GuidSerialized": "11e2cdd0-0f7e-4182-89a1-6d19222f31d9"
     },
-    "m_Name": "SecondaryColor",
+    "m_Name": "AccentColor",
     "m_DefaultRefNameVersion": 0,
     "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_4D1EE7AE",
@@ -1236,7 +1236,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "379f2a27e2a25285b4094552e6438011",
     "m_Id": 0,
-    "m_DisplayName": "ThirdColor",
+    "m_DisplayName": "LogoColor",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -3068,7 +3068,7 @@
     "m_Guid": {
         "m_GuidSerialized": "76bdbe97-9953-49c9-8833-4a5d7a754f06"
     },
-    "m_Name": "ThirdColor",
+    "m_Name": "LogoColor",
     "m_DefaultRefNameVersion": 0,
     "m_RefNameGeneratedByDisplayName": "",
     "m_DefaultReferenceName": "Color_5FF2AF86",
@@ -3390,7 +3390,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "c0b00a7a5ac11083b350fa72afe5a6fd",
     "m_Id": 0,
-    "m_DisplayName": "SecondaryColor",
+    "m_DisplayName": "AccentColor",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
