@@ -24,7 +24,8 @@ MonoBehaviour:
   AllowPartsDump: 1
   Parts:
   - Type: 25
-    Prefab: {fileID: 6758013699882205557, guid: 3d349476a3f825942b487e2be6145386, type: 3}
+    Prefab: {fileID: 6484500237054075496, guid: 51d3702dd2456894a95e87f6cde51bf5, type: 3}
+    PrefabAlt: {fileID: 177986758164238366, guid: 7350393649b7a5a4da60f34de6928e97, type: 3}
     Icon: {fileID: 2800000, guid: 7a9f1baf9fd9183409e2ba2ea1c30124, type: 3}
     ReplacementId: 0
     SteeringWheelSize: 0
@@ -41,10 +42,12 @@ MonoBehaviour:
     DefaultParts: []
     RotorType: 0
     Id: 76725942
-    Name: tire_westlake_chunky
-    FilePath: Assets/Content/CarParts/Examples/Tires/tire_westlake_chunky.prefab
+    Name: westlake_chunky
+    FilePath: Assets/Content/CarParts/Examples/Tires/westlake_chunky.prefab
+    FilePathAlt: Assets/Content/CarParts/Examples/Tires/westlake_chunky_R.prefab
   - Type: 25
-    Prefab: {fileID: 1782148538725817879, guid: abe677c2ed5927143bc3e49202486d94, type: 3}
+    Prefab: {fileID: 6429483262240087195, guid: a670d40c00f37e441aa7d8166ee9379c, type: 3}
+    PrefabAlt: {fileID: 2583243193448389151, guid: 26fbb915119b2ea429c170570a8a3ea8, type: 3}
     Icon: {fileID: 2800000, guid: 7a9f1baf9fd9183409e2ba2ea1c30124, type: 3}
     ReplacementId: 0
     SteeringWheelSize: 0
@@ -61,5 +64,6 @@ MonoBehaviour:
     DefaultParts: []
     RotorType: 0
     Id: 76767932
-    Name: tire_westlake_stretch
-    FilePath: Assets/Content/CarParts/Examples/Tires/tire_westlake_stretch.prefab
+    Name: westlake_stretch
+    FilePath: Assets/Content/CarParts/Examples/Tires/westlake_stretch.prefab
+    FilePathAlt: Assets/Content/CarParts/Examples/Tires/westlake_stretch_R.prefab
