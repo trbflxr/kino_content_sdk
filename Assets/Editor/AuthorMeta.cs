@@ -56,11 +56,11 @@ namespace Editor {
 
 			GUILayout.BeginHorizontal();
 			if (GUILayout.Button("How to get SteamID")) {
-				Utils.TryOpenLink("https://github.com/trbflxr/kino/blob/master/ContentCreation/GetSteamID.md");
+				Utils.TryOpenLink("https://github.com/trbflxr/kino/blob/master/ContentCreation/Tools/GetDiscordId_EN.md");
 			}
 
 			if (GUILayout.Button("How to get DiscordID")) {
-				Utils.TryOpenLink("https://github.com/trbflxr/kino/blob/master/ContentCreation/GetDiscordID.md");
+				Utils.TryOpenLink("https://github.com/trbflxr/kino/blob/master/ContentCreation/Tools/GetSteamId_EN.md");
 			}
 
 			GUILayout.EndHorizontal();
