@@ -11,7 +11,9 @@ namespace Editor {
 		Undefined = 0,
 		Wheels,
 		UniversalInteriorParts,
-		CarParts
+		CarParts,
+		Brakes,
+		Tires
 	}
 
 	public enum PartType {
@@ -37,7 +39,12 @@ namespace Editor {
 		LightsFront,
 		LightsRear,
 		Interior,
-		Chassis
+		Chassis,
+
+		BrakeRotor,
+		BrakeCaliper,
+
+		Tire,
 	}
 
 	[Flags]
@@ -68,6 +75,13 @@ namespace Editor {
 		// Shifter = 1 << 31,
 	}
 
+	public enum RotorType {
+		CastIronPerforated = 0,
+		CastIronVented,
+		CastIronSolid,
+		CarbonCeramic
+	}
+
 	[Serializable]
 	public class SlotEntry {
 		public SlotType Type;
@@ -82,6 +96,7 @@ namespace Editor {
 			public int Id;
 			public int ReplacementId;
 			public string FilePath;
+			public string FilePathAlt;
 			public string IconPath;
 
 			public float SteeringWheelSize;
@@ -99,6 +114,8 @@ namespace Editor {
 			public float RearBaseZ;
 			public float HeightOffset;
 			public int[] DefaultParts;
+
+			public int RotorType;
 		}
 
 		[Tooltip("Type of part.\n"
@@ -107,6 +124,9 @@ namespace Editor {
 
 		[Tooltip("Part prefab, can't be null")]
 		public GameObject Prefab;
+
+		[Tooltip("Part prefab, can't be null")]
+		public GameObject PrefabAlt;
 
 		[Tooltip("[Optional] Part icon.\n"
 		         + "It will be displayed on the card in the part selector in the game.")]
@@ -161,6 +181,8 @@ namespace Editor {
 		[Tooltip("Specify the parts that will be applied by default when selecting a bodykit")]
 		public List<SlotEntry> DefaultParts = new();
 
+		public RotorType RotorType = RotorType.CastIronPerforated;
+
 		[ReadOnly]
 		[HideInInspector]
 		public int Id;
@@ -168,6 +190,8 @@ namespace Editor {
 		public string Name = "unknown";
 		[HideInInspector]
 		public string FilePath = string.Empty;
+		[HideInInspector]
+		public string FilePathAlt = string.Empty;
 
 		public void Validate(bool forceRegenerateId) {
 			if (Prefab) {
@@ -178,59 +202,77 @@ namespace Editor {
 				Name = "unknown";
 			}
 
+			if (PrefabAlt) {
+				FilePathAlt = AssetDatabase.GetAssetPath(PrefabAlt);
+			}
+
 			if (forceRegenerateId || Id == 0) {
 				Id = Utils.GetId();
 			}
 		}
 
 		public bool ValidateHierarchy(IReadOnlyCollection<string> forbiddenNames) {
-			if (string.IsNullOrWhiteSpace(FilePath)) {
-				return false;
-			}
+			bool ValidatePrefab(string prefabPath) {
+				bool CheckObject(Transform transform, ref string lastName) {
+					if (!transform || string.IsNullOrWhiteSpace(transform.name)) {
+						return true;
+					}
 
-			var partObject = PrefabUtility.LoadPrefabContents(FilePath);
-			if (!partObject) {
-				Debug.LogError($"Kino: Unable to load prefab {FilePath}");
-				return false;
-			}
+					foreach (var forbiddenName in forbiddenNames) {
+						if (transform.name.StartsWith(forbiddenName, StringComparison.OrdinalIgnoreCase)) {
+							lastName = transform.name;
+							return false;
+						}
+					}
 
-			bool CheckObject(Transform transform, ref string lastName) {
-				if (!transform || string.IsNullOrWhiteSpace(transform.name)) {
+					foreach (Transform child in transform) {
+						if (!CheckObject(child, ref lastName)) {
+							return false;
+						}
+					}
+
 					return true;
 				}
 
-				foreach (var forbiddenName in forbiddenNames) {
-					if (transform.name.StartsWith(forbiddenName, StringComparison.OrdinalIgnoreCase)) {
-						lastName = transform.name;
-						return false;
-					}
-				}
-
-				foreach (Transform child in transform) {
-					if (!CheckObject(child, ref lastName)) {
-						return false;
-					}
-				}
-
-				return true;
-			}
-
-			try {
-				string lastName = "unknown";
-				if (!CheckObject(partObject.transform, ref lastName)) {
-					Debug.LogError($"Kino: Forbidden prefab child name '{lastName}', prefab: {Name}");
+				if (string.IsNullOrWhiteSpace(prefabPath)) {
 					return false;
 				}
 
-				return true;
+				var partObject = PrefabUtility.LoadPrefabContents(prefabPath);
+				if (!partObject) {
+					Debug.LogError($"Kino: Unable to load prefab {prefabPath}");
+					return false;
+				}
+
+				try {
+					string lastName = "unknown";
+					if (!CheckObject(partObject.transform, ref lastName)) {
+						Debug.LogError($"Kino: Forbidden prefab child name '{lastName}', prefab: {Name}");
+						return false;
+					}
+
+					return true;
+				}
+				catch (Exception e) {
+					Debug.LogError($"Kino: An error occurred while validating hierarchy of {prefabPath}, e: {e}");
+					return false;
+				}
+				finally {
+					PrefabUtility.UnloadPrefabContents(partObject);
+				}
 			}
-			catch (Exception e) {
-				Debug.LogError($"Kino: An error occurred while validating hierarchy of {FilePath}, e: {e}");
+
+			if (!ValidatePrefab(FilePath)) {
 				return false;
 			}
-			finally {
-				PrefabUtility.UnloadPrefabContents(partObject);
+
+			if (Type is PartType.Tire or PartType.BrakeRotor or PartType.BrakeCaliper) {
+				if (!ValidatePrefab(FilePathAlt)) {
+					return false;
+				}
 			}
+
+			return true;
 		}
 	}
 
@@ -323,6 +365,7 @@ namespace Editor {
 				var partMeta = new PartMeta.Proxy {
 					Type = (int) part.Type,
 					FilePath = part.FilePath,
+					FilePathAlt = part.FilePathAlt,
 					IconPath = string.Empty,
 					Id = part.Id,
 					ReplacementId = part.ReplacementId,
@@ -341,7 +384,9 @@ namespace Editor {
 					FrontBaseZ = part.FrontBaseZ,
 					RearBaseZ = part.RearBaseZ,
 					HeightOffset = part.HeightOffset,
-					DefaultParts = new int[part.DefaultParts.Count]
+					DefaultParts = new int[part.DefaultParts.Count],
+
+					RotorType = (int) part.RotorType
 				};
 
 				for (int i = 0; i < part.DefaultParts.Count; ++i) {
@@ -349,6 +394,10 @@ namespace Editor {
 				}
 
 				if (string.IsNullOrWhiteSpace(partMeta.FilePath)) {
+					continue;
+				}
+
+				if ((part.Type is PartType.Tire or PartType.BrakeRotor or PartType.BrakeCaliper) && string.IsNullOrWhiteSpace(partMeta.FilePathAlt)) {
 					continue;
 				}
 
@@ -450,10 +499,14 @@ namespace Editor {
 				bool isWheel = part.Type == PartType.Wheel;
 				bool isInterior = IsInteriorPart(part.Type);
 				bool isExterior = IsExteriorPart(part.Type);
+				bool isBrake = IsBrakePart(part.Type);
+				bool isTire = part.Type == PartType.Tire;
 
 				if ((Type == PackType.Wheels && !isWheel)
 				    || (Type == PackType.UniversalInteriorParts && !isInterior)
-				    || (Type == PackType.CarParts && !isExterior)) {
+				    || (Type == PackType.CarParts && !isExterior)
+				    || (Type is PackType.Brakes && !isBrake)
+				    || (Type is PackType.Tires && part.Type != PartType.Tire)) {
 					Debug.LogWarning($"Kino: Part {part.Name} ({part.Type}) is incompatible with pack {Name} ({Type}), because of type difference");
 					valid_ = false;
 				}
@@ -462,11 +515,16 @@ namespace Editor {
 					Debug.LogWarning($"Kino: Prefab is not set for part {part.Id} ({part.Type})");
 					valid_ = false;
 				}
+
+				if ((isTire || isBrake) && !part.PrefabAlt) {
+					Debug.LogWarning($"Kino: Prefab is not set for part {part.Id} ({part.Type})");
+					valid_ = false;
+				}
 			}
 		}
 
 		private bool IsExteriorPart(PartType type) {
-			return type != PartType.Wheel && !IsInteriorPart(type);
+			return type != PartType.Wheel && !IsInteriorPart(type) && !IsBrakePart(type) && type != PartType.Tire;
 		}
 
 		private bool IsInteriorPart(PartType type) {
@@ -481,6 +539,13 @@ namespace Editor {
 			}
 
 			return false;
+		}
+
+		private bool IsBrakePart(PartType type) {
+			return type switch {
+				PartType.BrakeRotor or PartType.BrakeCaliper => true,
+				_ => false
+			};
 		}
 	}
 
@@ -564,14 +629,14 @@ namespace Editor {
 			string title = "unknown";
 			var partType = PartType.Undefined;
 
-			var prefabProp = property.FindPropertyRelative("Prefab");
-			if (prefabProp?.objectReferenceValue) {
-				title = prefabProp.objectReferenceValue.name;
-			}
-
 			var typeProp = property.FindPropertyRelative("Type");
 			if (typeProp != null) {
 				partType = (PartType) typeProp.intValue;
+			}
+
+			var prefabProp = property.FindPropertyRelative("Prefab");
+			if (prefabProp?.objectReferenceValue) {
+				title = prefabProp.objectReferenceValue.name;
 			}
 
 			var foldoutLabel = new GUIContent($"{partType} ({title})");
@@ -585,10 +650,27 @@ namespace Editor {
 				float y = position.y;
 				float width = position.width;
 
+				bool isBrake = partType is PartType.BrakeRotor or PartType.BrakeCaliper;
+				bool isTire = partType is PartType.Tire;
+
 				DrawProperty(ref x, ref y, width, typeProp);
-				DrawProperty(ref x, ref y, width, prefabProp);
+
+				bool hasAltPrefab = partType is PartType.Tire or PartType.BrakeRotor or PartType.BrakeCaliper;
+				if (hasAltPrefab) {
+					var altPrefabProp = property.FindPropertyRelative("PrefabAlt");
+
+					DrawProperty(ref x, ref y, width, prefabProp, new GUIContent("Prefab Left"));
+					DrawProperty(ref x, ref y, width, altPrefabProp, new GUIContent("Prefab Right"));
+				}
+				else {
+					DrawProperty(ref x, ref y, width, prefabProp);
+				}
+
 				DrawProperty(ref x, ref y, width, property, "Icon");
-				DrawProperty(ref x, ref y, width, property, "ReplacementId");
+
+				if (!isBrake && !isTire) {
+					DrawProperty(ref x, ref y, width, property, "ReplacementId");
+				}
 
 				if (partType is PartType.SteeringWheel) {
 					DrawProperty(ref x, ref y, width, property, "SteeringWheelSize");
@@ -650,6 +732,10 @@ namespace Editor {
 					}
 				}
 
+				if (partType is PartType.BrakeRotor) {
+					DrawProperty(ref x, ref y, width, property, "RotorType");
+				}
+
 				y += offset_;
 				state.Height = y - position.y;
 			}
@@ -662,11 +748,16 @@ namespace Editor {
 			return DrawProperty(ref x, ref y, width, prop);
 		}
 
-		SerializedProperty DrawProperty(ref float x, ref float y, float width, SerializedProperty property) {
+		SerializedProperty DrawProperty(ref float x, ref float y, float width, SerializedProperty property, GUIContent label = null) {
 			y += offset_;
 
 			var rect = new Rect(x, y, width, EditorGUIUtility.singleLineHeight);
-			EditorGUI.PropertyField(rect, property, true);
+			if (label != null) {
+				EditorGUI.PropertyField(rect, property, label, true);
+			}
+			else {
+				EditorGUI.PropertyField(rect, property, true);
+			}
 
 			return property;
 		}

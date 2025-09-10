@@ -40,6 +40,17 @@ namespace Editor {
 				assets.Add(proxy.PackIcon);
 			}
 
+			bool AddAsset(int partId, string assetPath) {
+				if (string.IsNullOrWhiteSpace(assetPath)) {
+					Debug.LogWarning($"Kino: Skipped invalid part ({partId}) in '{proxy.Name}'");
+					return false;
+				}
+
+				assets.Add(assetPath);
+
+				return true;
+			}
+
 			foreach (var part in proxy.Parts) {
 				if (string.IsNullOrWhiteSpace(part.FilePath)) {
 					Debug.LogWarning($"Kino: Skipped invalid part ({part.Id}) in '{proxy.Name}'");
@@ -47,6 +58,10 @@ namespace Editor {
 				}
 
 				assets.Add(part.FilePath);
+
+				if (!string.IsNullOrWhiteSpace(part.FilePathAlt)) {
+					assets.Add(part.FilePathAlt);
+				}
 
 				if (!string.IsNullOrWhiteSpace(part.IconPath)) {
 					assets.Add(part.IconPath);

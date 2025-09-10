@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e40cfe666e84771b7a249caa74eb593, type: 3}
+  m_Name: __meta
+  m_EditorClassIdentifier: 
+  SelectedToBuild: 1
+  Name: kino_brakes_example
+  Id: 5503389804559073280
+  Type: 4
+  TargetCarId: -1
+  CategoryName: kino
+  Description: example kino brakes
+  PackIcon: {fileID: 2800000, guid: 718111077419f994bbe225cf61d26118, type: 3}
+  Version: 100
+  AllowPartsDump: 1
+  Parts:
+  - Type: 23
+    Prefab: {fileID: 4176536346894983508, guid: ceb4d690a1bf34145aed4095a51b5b04, type: 3}
+    PrefabAlt: {fileID: 4865091815382945112, guid: 5b2c4b1692c70be488ecb17665ae63f9, type: 3}
+    Icon: {fileID: 2800000, guid: 718111077419f994bbe225cf61d26118, type: 3}
+    ReplacementId: 0
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    CarNameOverride: 
+    EnabledParts: 0
+    FrontTrackWidth: 0
+    RearTrackWidth: 0
+    FrontBaseZ: 0
+    RearBaseZ: 0
+    HeightOffset: 0
+    DefaultParts: []
+    RotorType: 0
+    Id: 83605953
+    Name: mu_rotor
+    FilePath: Assets/Content/CarParts/Examples/Brakes/mu_rotor.prefab
+    FilePathAlt: Assets/Content/CarParts/Examples/Brakes/mu_rotor_R.prefab
+  - Type: 24
+    Prefab: {fileID: 3856081493248847924, guid: 75b01c6e30ea9d442948fa5d5855c2eb, type: 3}
+    PrefabAlt: {fileID: 8456640258841890148, guid: 004567f5c566caf46a3022a3e8d5d7f4, type: 3}
+    Icon: {fileID: 2800000, guid: 48d33fbc4517c3b4c89252574f818848, type: 3}
+    ReplacementId: 0
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    CarNameOverride: 
+    EnabledParts: 0
+    FrontTrackWidth: 0
+    RearTrackWidth: 0
+    FrontBaseZ: 0
+    RearBaseZ: 0
+    HeightOffset: 0
+    DefaultParts: []
+    RotorType: 0
+    Id: 83605954
+    Name: mu_caliper
+    FilePath: Assets/Content/CarParts/Examples/Brakes/mu_caliper.prefab
+    FilePathAlt: Assets/Content/CarParts/Examples/Brakes/mu_caliper_R.prefab

@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e40cfe666e84771b7a249caa74eb593, type: 3}
+  m_Name: __meta
+  m_EditorClassIdentifier: 
+  SelectedToBuild: 1
+  Name: kino_tires_example
+  Id: 4317295621024251904
+  Type: 5
+  TargetCarId: -1
+  CategoryName: kino
+  Description: example tires pack
+  PackIcon: {fileID: 2800000, guid: e3930260e87ce604fbfa2b2e4c91d2fa, type: 3}
+  Version: 100
+  AllowPartsDump: 1
+  Parts:
+  - Type: 25
+    Prefab: {fileID: 6484500237054075496, guid: 51d3702dd2456894a95e87f6cde51bf5, type: 3}
+    PrefabAlt: {fileID: 177986758164238366, guid: 7350393649b7a5a4da60f34de6928e97, type: 3}
+    Icon: {fileID: 2800000, guid: 7a9f1baf9fd9183409e2ba2ea1c30124, type: 3}
+    ReplacementId: 0
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    CarNameOverride: 
+    EnabledParts: 0
+    FrontTrackWidth: 0
+    RearTrackWidth: 0
+    FrontBaseZ: 0
+    RearBaseZ: 0
+    HeightOffset: 0
+    DefaultParts: []
+    RotorType: 0
+    Id: 76725942
+    Name: westlake_chunky
+    FilePath: Assets/Content/CarParts/Examples/Tires/westlake_chunky.prefab
+    FilePathAlt: Assets/Content/CarParts/Examples/Tires/westlake_chunky_R.prefab
+  - Type: 25
+    Prefab: {fileID: 6429483262240087195, guid: a670d40c00f37e441aa7d8166ee9379c, type: 3}
+    PrefabAlt: {fileID: 2583243193448389151, guid: 26fbb915119b2ea429c170570a8a3ea8, type: 3}
+    Icon: {fileID: 2800000, guid: 7a9f1baf9fd9183409e2ba2ea1c30124, type: 3}
+    ReplacementId: 0
+    SteeringWheelSize: 0
+    OverrideTurnSignals: 0
+    OverrideHeadlightsMask: 0
+    OverrideBrakeLight: 0
+    CarNameOverride: 
+    EnabledParts: 0
+    FrontTrackWidth: 0
+    RearTrackWidth: 0
+    FrontBaseZ: 0
+    RearBaseZ: 0
+    HeightOffset: 0
+    DefaultParts: []
+    RotorType: 0
+    Id: 76767932
+    Name: westlake_stretch
+    FilePath: Assets/Content/CarParts/Examples/Tires/westlake_stretch.prefab
+    FilePathAlt: Assets/Content/CarParts/Examples/Tires/westlake_stretch_R.prefab
